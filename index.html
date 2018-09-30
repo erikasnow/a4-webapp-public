@@ -2,6 +2,7 @@
 <head>
     <title>CS4241 Assignment 4</title>
     <link rel="stylesheet" type="text/css" href="style.css"/>
+    <link rel="import" href="screens.html">
     <meta charset="utf-8">
 </head>
 <body>
@@ -11,8 +12,20 @@
 
     <div> <!--Game-->
         <div class="screenInventoryWrapper"> <!--screen and inventory-->
-            <div class="screen"> <!--screen, fat-->
-                screen
+            <div id="screen" class="screen"> <!--screen, fat-->
+                <div id="initScreen">
+                    screen
+                </div>
+                <script>
+                    var link = document.querySelector('link[rel="import"]');
+                    var content = link.import;
+                
+                    // Grab DOM from warning.html's document.
+                    var el = content.querySelector('.mainScreen');
+                
+                    //document.body.appendChild(el.cloneNode(true));
+                    document.getElementById("screen").replaceChild(el.cloneNode(true), document.getElementById("initScreen"));
+                </script>
             </div>
             <table class="inventory"> <!--inventory-->
                 <tr>
@@ -28,8 +41,14 @@
                 </tr>
             </table>
         </div>
-        <div class="characterWrapper"> <!--characters-->
-            <div style="background:burlywood;height:100%"> <!--characters, skinny-->
+        <div class="characterPromptWrapper"> <!--characters and text prompt-->
+            <div style="background:cornsilk;height:35%"> <!--object info-->
+                <!--this will show a picture of the object and then a description-->
+                                    <!--OR-->
+                <!--this will show info about what you clicked (like saying the door is locked)-->
+                object info
+            </div>
+            <div style="background:burlywood;height:65%"> <!--characters, skinny-->
                 characters
             </div> 
         </div>
