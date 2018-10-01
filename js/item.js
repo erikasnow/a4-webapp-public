@@ -32,14 +32,17 @@ function itemSelection(inventoryNumber){
 }
 function displayItem(itemId){
     let textprompt = document.getElementById("textprompt");
-    let text ="";
-    textprompt.innerHTML = itemId+ text;
+    let text = "";
+    var pic = itemId + '.jpg';
+    var picElt = '<img src="' + pic + '" style="width:30%;height:40%">'
+      
+    textprompt.innerHTML =picElt+  '<button onclick="inspect(\''+itemId+'\')">inspect</button>'+itemId+ text ;
 }
 
 //inspect the item 
 //on inspect button
 function inspect(itemId){
-
+    console.log(itemId)
 }
 
 //inventory switch between char selections
