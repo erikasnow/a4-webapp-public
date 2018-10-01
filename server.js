@@ -1,12 +1,12 @@
 var http = require('http')
     , fs = require('fs')
     , url = require('url')
-    , database = require('./database.js')
+    //, database = require('./database.js')
     , port = 8080;
 
 // Database setup
 console.log('connecting to database');
-database.connect();
+//database.connect();
 
 var server = http.createServer(function (req, res) {
     var uri = url.parse(req.url)
@@ -43,14 +43,10 @@ var server = http.createServer(function (req, res) {
             sendFile(res, 'js/characterSelection.js', 'text/javacript')
             break
         case '/js/item.js':
-<<<<<<< HEAD
-            sendFile(res, 'js/items.js', 'text/javacript')
-=======
             sendFile(res, 'js/item.js', 'text/javascript')
             break
         case '/placeholder.jpg':
             sendFile(res, 'placeholder.jpg')
->>>>>>> 3c17540363992fd7aed317f28e515074ee261021
             break
         default:
             res.end('404 not found')

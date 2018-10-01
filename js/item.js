@@ -2,23 +2,23 @@
 function itemSelection(inventoryNumber){
     let itemId;
     switch (inventoryNumber) {
-        case 1:
+        case "1":
         itemId = 1;
             break;
-        case 2:
+        case "2":
         itemId= 2;
             break;
-        case 3:
-        itemId= 2;
+        case "3":
+        itemId= 3;
             break;
-        case 4:
-        itemId= 2;
+        case "4":
+        itemId= 4;
             break;
-        case 5:
-        itemId= 2;
+        case "5":
+        itemId= 5;
             break;
-        case 6:
-        itemId= 2;
+        case "6":
+        itemId= 6;
             break;
     
         default:
