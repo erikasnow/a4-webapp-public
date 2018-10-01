@@ -29,22 +29,22 @@ function goToRules() {
    // document.getElementById("screen").appendChild(el.cloneNode(true));
     //document.getElementById("screen").removeChild(document.getElementById("screen").firstChild);
    // $(document).ready(function(){
-       $('#initScreen').load('scene1.html');
+       $('#initScreen').load('rulesScreen.html');
    // });
 }
 
 function goToGame() {
-
+    $('#initScreen').load('tutorialScreen.html');
 }
 
 function goToEnd() {
-
+    $('#initScreen').load('endScreen.html');
 }
 
 function goToMain() {
-
+    $('#initScreen').load('mainScreen.html');
 }
 
 function goToScores() {
-
+    $('#initScreen').load('scoreScreen.html');
 }
