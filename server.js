@@ -23,6 +23,8 @@ var server = http.createServer(function (req, res) {
         case '/style.css':
             sendFile(res, 'style.css', 'text/css')
             break
+        case '/js/sceneHandler.js':
+            sendFile(res, 'js/sceneHandler.js', 'text/javacript')
         default:
             res.end('404 not found')
     }

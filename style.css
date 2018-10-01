@@ -35,3 +35,25 @@
     height:85%;
     margin-right:3%
 }
+
+.characterTable {
+    background: whitesmoke;
+    width:70%;
+    height:60%;
+    margin: auto;
+}
+
+.characterCell {
+    background: red;
+    width: 25%;
+}
+
+.mainScreenBtns {
+    margin: auto;
+    min-width: 50px;
+}
+
+.endScreenBtns {
+    margin: auto;
+    min-width: 50px;
+}
