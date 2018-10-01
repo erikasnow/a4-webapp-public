@@ -15,6 +15,7 @@ function clearInventory() {
         console.log("entered for loop")
         cells[i].innerHTML = '';
     }
-
+    var prompt = document.getElementById("textprompt");
+    prompt.innerHTML="";
     console.log("should have deleted all pictures from inventory");
 }
