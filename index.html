@@ -14,9 +14,11 @@
     <div> <!--Game-->
         <div class="screenInventoryWrapper"> <!--screen and inventory-->
             <div id="screen" class="screen"> <!--screen, fat-->
+                
                 <div id="initScreen">
                     screen
                 </div>
+            
                 <script>
                     var link = document.querySelector('link[rel="import"]');
                     var content = link.import;
@@ -25,8 +27,10 @@
                     var el = content.querySelector('.mainScreen');
                 
                     //document.body.appendChild(el.cloneNode(true));
-                    document.getElementById("screen").replaceChild(el.cloneNode(true), document.getElementById("initScreen"));
-                </script>
+                    //document.getElementById("screen").replaceChild(el.cloneNode(true), document.getElementById("initScreen"));
+                    document.getElementById("screen").appendChild(el.cloneNode(true));
+               </script>
+               
             </div>
             <table class="inventory"> <!--inventory-->
                 <tr>

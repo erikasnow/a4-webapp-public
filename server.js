@@ -25,6 +25,7 @@ var server = http.createServer(function (req, res) {
             break
         case '/js/sceneHandler.js':
             sendFile(res, 'js/sceneHandler.js', 'text/javacript')
+            break
         default:
             res.end('404 not found')
     }
