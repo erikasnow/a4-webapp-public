@@ -7,6 +7,8 @@
     <link rel="import" href="screens.html">
     <script src="js/sceneHandler.js"></script>
     <script src="js/characterSelection.js"></script>
+    <script src="js/item.js"></script>
+
     <meta charset="utf-8">
 </head>
 
@@ -32,12 +34,12 @@
                     <th colspan="6" style="height:1%">Inventory</th>
                 </tr>
                 <tr><!--these need to be big and square so pictures can go in them-->
-                    <td class="inventoryCell">1</td>
-                    <td class="inventoryCell">2</td>
-                    <td class="inventoryCell">3</td>
-                    <td class="inventoryCell">4</td>
-                    <td class="inventoryCell">5</td>
-                    <td class="inventoryCell">6</td>
+                    <td onclick="itemSelection('1')" class="inventoryCell">1</td>
+                    <td onclick="itemSelection('2')" class="inventoryCell">2</td>
+                    <td onclick="itemSelection('3')" class="inventoryCell">3</td>
+                    <td onclick="itemSelection('4')" class="inventoryCell">4</td>
+                    <td onclick="itemSelection('5')" class="inventoryCell">5</td>
+                    <td onclick="itemSelection('6')" class="inventoryCell">6</td>
                 </tr>
             </table>
         </div>
@@ -49,7 +51,13 @@
                 object info
             </div>
             <div style="background:burlywood;height:65%"><!--characters, skinny-->
-                characters
+                <table class="characterTable">
+                        <tr><td onclick="chooseCharacter('Ally')" class="characterCell"id = "charCell" value = "Ally">Ally</td></tr>
+                        <tr><td onclick="chooseCharacter('Erika')" class="characterCell"id = "charCell" value = "Erika">Erika</td></tr>
+                        <tr><td onclick="chooseCharacter('Joan')" class="characterCell"id = "charCell" value = "Joan">Joan</td></tr>
+                        <tr><td onclick="chooseCharacter('Krysta')" class="characterCell"id = "charCell" value = "Krysta">Krysta</td></tr>
+    
+                    </table>
             </div>
         </div>
     </div>
