@@ -50,13 +50,14 @@ function addToInventory(itemId){
     console.log("entered addToInventory");
     //put picture in the inventory
     var pic = itemId + '.jpg';
-    var picElt = '<img src="' + pic + '" style:"width:5%;height:5%">';
+    var picElt = '<img src="' + pic + '" style="width:50%;height:25%">';
 
     var cellsRow = document.getElementById("inventoryCells");
     var cells = cellsRow.getElementsByTagName("td");
-    var emptyCell;
+    var emptyCell = cells[0];
 
     for(let i = 0; i < cells; i++){
+        console.log("entered for loop")
         if(cells[i].innerHTML == ''){
             console.log("found empty cell");
             emptyCell = cells[i];
