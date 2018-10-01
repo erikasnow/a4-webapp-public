@@ -72,3 +72,8 @@ td {
     margin: auto;
     min-width: 50px;
 }
+
+#disabler {
+    opacity: 0.5;
+    margin-bottom: -200px;
+}

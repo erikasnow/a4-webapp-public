@@ -26,11 +26,19 @@ function itemSelection(inventoryNumber){
         default:
         itemId= 0;
         break;
-    }    console.log(inventoryNumber+typeof inventoryNumber)
-
+    }            
+    window.inventoryActive = itemId;
     displayItem(itemId);
 }
 function displayItem(itemId){
+    let textprompt = document.getElementById("textprompt");
+    let text = "";
+    var pic = itemId + '.jpg';
+    var picElt = '<img src="' + pic + '" style="width:30%;height:40%">'
+      
+    textprompt.innerHTML =picElt+  '<button onclick="inspect(\''+itemId+'\')">inspect</button>'+"???"+ text ;
+}
+function updateDisplayItem(itemId){
     let textprompt = document.getElementById("textprompt");
     let text = "";
     var pic = itemId + '.jpg';
@@ -43,6 +51,7 @@ function displayItem(itemId){
 //on inspect button
 function inspect(itemId){
     console.log(itemId)
+    updateDisplayItem(itemId);
 }
 
 //inventory switch between char selections
