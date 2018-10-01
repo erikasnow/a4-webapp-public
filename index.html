@@ -1,6 +1,7 @@
 <html lang="en">
 <head>
     <title>CS4241 Assignment 4</title>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.5.1.min.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css"/>
     <link rel="import" href="screens.html">
     <script src="js/sceneHandler.js"></script>
@@ -14,23 +15,15 @@
     <div> <!--Game-->
         <div class="screenInventoryWrapper"> <!--screen and inventory-->
             <div id="screen" class="screen"> <!--screen, fat-->
-               <!-- 
+               
                 <div id="initScreen">
                     screen
                 </div>
-            
-                <script>
-                    var link = document.querySelector('link[rel="import"]');
-                    var content = link.import;
-                
-                    // Grab DOM from warning.html's document.
-                    var el = content.querySelector('.mainScreen');
-                
-                    //document.body.appendChild(el.cloneNode(true));
-                    document.getElementById("screen").replaceChild(el.cloneNode(true), document.getElementById("initScreen"));
-                    document.getElementById("screen").appendChild(el.cloneNode(true));
-               </script>
-            -->
+            <script>
+                $('#initScreen').load('screens.html');
+            </script>
+               
+               
             </div>
             <table class="inventory"> <!--inventory-->
                 <tr>

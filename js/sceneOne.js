@@ -1,12 +1,12 @@
 //init routing for the scene
-function startScene(){
+function startSceneOne(){
 
 }
 
-function endScene(){
+function endSceneOne(){
 
 }
 
-function switchScene(){
+function switchSceneOneTwo(){
 
 }

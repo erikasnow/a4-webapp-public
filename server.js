@@ -20,6 +20,9 @@ var server = http.createServer(function (req, res) {
         case '/screens.html':
             sendFile(res, 'screens.html')
             break
+        case '/scene1.html':
+            sendFile(res, 'scene1.html')
+            break
         case '/style.css':
             sendFile(res, 'style.css', 'text/css')
             break
