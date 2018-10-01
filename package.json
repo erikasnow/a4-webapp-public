@@ -1,0 +1,22 @@
+{
+  "name": "a4-webapp",
+  "version": "1.0.0",
+  "description": "Assignment 4 - Real Web Apps: Designing for an Area of Life  \r ===",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/erikasnow/a4-webapp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/erikasnow/a4-webapp/issues"
+  },
+  "dependencies":{},
+  "homepage": "https://github.com/erikasnow/a4-webapp#readme"
+}
