@@ -14,7 +14,7 @@ function switchCharacter(){
 
 //put character information in text above
 function displayCharacterDescription(character){
-    let textprompt = document.getElementById("textprompt");
+    let textprompt = document.getElementById("objectInfo");
     let text;
     switch (character) {
         case "Ally":
