@@ -1,3 +1,8 @@
+p {
+    margin-left:1%;
+    margin-right:1%;
+}
+
 .header {
     background:crimson;
     text-align:center;
@@ -46,6 +51,7 @@
     height:60%;
     margin: auto;
 }
+
 .characterTable {
     background: whitesmoke;
     width:100%;
@@ -54,10 +60,13 @@
     color: black;
     border: 1;
 }
+
 .characterCellMain {
     background: red;
     width: 25%;
+    text-align: center;
 }
+
 td {
     border-collapse: collapse;
     border: 2px solid rgb(34, 32, 32);
