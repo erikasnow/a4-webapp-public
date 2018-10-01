@@ -14,7 +14,7 @@ p {
     padding:10px;
     min-width: 600px;
     width:60%;
-
+    min-height: 480px;
     height:85%;
     margin-left:3%;
 }

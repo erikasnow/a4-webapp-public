@@ -3,6 +3,7 @@ function chooseCharacter(character){
     console.log("character"+character)
     window.character = character;
     console.log(window.character)
+    updateInventory();
     displayCharacterDescription(character)
 }
 

@@ -14,6 +14,12 @@ function start() {
     window.inventory[4]= "";
     window.inventory[5]= "";
     window.inventory[6]= "";
+    window.inventory[1].inspected = false;
+    window.inventory[2].inspected = false;
+    window.inventory[3].inspected = false;
+    window.inventory[4].inspected = false;
+    window.inventory[5].inspected = false;
+    window.inventory[6].inspected = false;
 }
 
 //Start playing music if we want any
