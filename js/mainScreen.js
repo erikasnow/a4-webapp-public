@@ -8,18 +8,12 @@ function howto() {
 function start() {
     //switch to scene 1
     window.inventoryActive = "";
-    window.inventory[1]= "";
-    window.inventory[2]= "";
-    window.inventory[3]= "";
-    window.inventory[4]= "";
-    window.inventory[5]= "";
-    window.inventory[6]= "";
-    window.inventory[1].inspected = false;
-    window.inventory[2].inspected = false;
-    window.inventory[3].inspected = false;
-    window.inventory[4].inspected = false;
-    window.inventory[5].inspected = false;
-    window.inventory[6].inspected = false;
+    window.inventory[1]= {id:"", inspected:false};
+    window.inventory[2]= {id:"", inspected:false};
+    window.inventory[3]= {id:"", inspected:false};
+    window.inventory[4]= {id:"", inspected:false};
+    window.inventory[5]= {id:"", inspected:false};
+    window.inventory[6]= {id:"", inspected:false};
 }
 
 //Start playing music if we want any

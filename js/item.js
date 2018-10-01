@@ -2,33 +2,33 @@
 
 //change what item is selected in the inventory
 function itemSelection(inventoryNumber){
-    console.log("inventory selection")
+    //console.log("inventory selection")
     let itemId;
     let inventory =0;
     switch (inventoryNumber) {
         case "1":
-        itemId = window.inventory[1];
-        console.log(window.inventory[1])
+        itemId = window.inventory[1].id;
+        //console.log(window.inventory[1])
         inventory =1;
             break;
         case "2":
-        itemId= window.inventory[2];
+        itemId= window.inventory[2].id;
         inventory =2;
             break;
         case "3":
-        itemId= window.inventory[3];
+        itemId= window.inventory[3].id;
         inventory =3;
             break;
         case "4":
-        itemId= window.inventory[4];
+        itemId= window.inventory[4].id;
         inventory =4;
             break;
         case "5":
-        itemId=window.inventory[5];
+        itemId=window.inventory[5].id;
         inventory =5;
             break;
         case "6":
-        itemId= window.inventory[6];
+        itemId= window.inventory[6].id;
         inventory =6;
             break;
     
@@ -38,34 +38,41 @@ function itemSelection(inventoryNumber){
     }
     window.inventoryActive2= window.inventoryActive;
     window.inventoryActive = itemId;
-    displayItem(itemId, inventoryNumber);
+    displayItem(itemId, parseInt(inventory,10));
 }
 function displayItem(itemId, inventoryNumber){
+    console.log("inspected"+itemId+ inventoryNumber +window.inventory[inventoryNumber].inspected)
     let textprompt = document.getElementById("textprompt");
     let text = "";
     var pic = itemId + '.jpg';
     var picElt = '<img src="' + pic + '" style="width:30%;height:40%">'
-    if(window.inspected[inventoryNumber].inspected ==false){
-        textprompt.innerHTML =picElt+  '<button onclick="inspect(\''+itemId+'\'' + inventoryNumber+'\')">inspect</button>'+"???"+ text ;
+    let inspect ={id:itemId, num:inventoryNumber};
+    if(window.inventory[inventoryNumber].inspected == false){
+        textprompt.innerHTML =picElt+  '<button onclick="inspect(\''+inspect+'\')">inspect</button>'+"???"+ text ;
     } else {
-        textprompt.innerHTML =picElt+  '<button onclick="inspect(\''+itemId+'\'' + inventoryNumber+'\')">inspect</button>'+itemId+ text ;
+        textprompt.innerHTML =picElt+  '<button onclick="inspect(\''+inspect+'\')">inspect</button>'+itemId+ text ;
     }
 }
-function updateDisplayItem(itemId){
+function updateDisplayItem(itemId, inventoryNumber){
     let textprompt = document.getElementById("textprompt");
     let text = "";
     var pic = itemId + '.jpg';
     var picElt = '<img src="' + pic + '" style="width:30%;height:40%">'
-      
-    textprompt.innerHTML =picElt+  '<button onclick="inspect(\''+itemId+'\')">inspect</button>'+itemId+ text ;
+    let inspect ={id:itemId, num:inventoryNumber};
+
+
+    textprompt.innerHTML =picElt+  '<button onclick="inspect(\''+inspect+'\')">inspect</button>'+itemId+ text ;
 }
 
 //inspect the item 
 //on inspect button
-function inspect(itemId, inventoryNumber){
+function inspect(inspected){
+    console.log("INSPECTED"+ inspected )
+    let itemId = inspected.id;
+    let inventoryNumber= inspected.num;
+    console.log("line "+itemId+ "   " +inventoryNumber + typeof inventoryNumber)
     window.inventory[inventoryNumber].inspected = true;
-    console.log(itemId)
-    updateDisplayItem(itemId);
+    updateDisplayItem(itemId, inventoryNumber);
 }
 
 //inventory switch between char selections
@@ -79,7 +86,7 @@ function updateInventory(){
 
 //add the item to the character inventory
 function addToInventory(itemId){
-    console.log("entered addToInventory");
+    //console.log("entered addToInventory");
     //put picture in the inventory
     var pic = itemId + '.jpg';
     var picElt = '<img src="' + pic + '" style="width:50%;height:25%">';
@@ -89,17 +96,18 @@ function addToInventory(itemId){
     var emptyCell = cells[0];
 
     for(let i = 0; i < cells.length; i++){
-        console.log("entered for loop")
+        //console.log("entered for loop")
         if(cells[i].innerHTML == ''){
-            console.log("found empty cell");
+            //console.log("found empty cell");
             emptyCell = cells[i];
             var num = i +1;
-            window.inventory[num] = itemId;
+            window.inventory[num].id = itemId;
+            //console.log("add"+ window.inventory[num].id)
             break;
         }
     }
 
     emptyCell.innerHTML = picElt;
-    console.log("should have added picture to inventory");
+    //console.log("should have added picture to inventory");
 }
 
