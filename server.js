@@ -1,12 +1,12 @@
 var http = require('http')
     , fs = require('fs')
     , url = require('url')
-    , database = require('./database.js')
+    //, database = require('./database.js')
     , port = 8080;
 
 // Database setup
 console.log('connecting to database');
-database.connect();
+//database.connect();
 
 var server = http.createServer(function (req, res) {
     var uri = url.parse(req.url)
