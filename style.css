@@ -45,6 +45,22 @@ p {
     margin-right:3%
 }
 
+.objectPicture {
+    background:orange;
+    float:left;
+    width:30%;
+    height:94%;
+    padding:1%;
+}
+
+.objectInfo {
+    background:yellow;
+    float:right;
+    width:65%;
+    height:94%;
+    padding:1%;
+}
+
 .characterTableMain {
     background: whitesmoke;
     width:70%;
