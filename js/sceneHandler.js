@@ -9,7 +9,7 @@ function initScreen() {
 
     //document.body.appendChild(el.cloneNode(true));
     //document.getElementById("screen").replaceChild(el.cloneNode(true), document.getElementById("initScreen"));
-    //document.getElementById("screen").appendChild(el.cloneNode(true));
+    document.getElementById("screen").appendChild(el.cloneNode(true));
 }
 
 function goToRules() {
