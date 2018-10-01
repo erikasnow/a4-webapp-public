@@ -1,11 +1,12 @@
 var http = require('http')
     , fs = require('fs')
     , url = require('url')
-    //, sql = require('sqlite3')
+    , database = require('./database.js')
     , port = 8080;
 
-// db setup
-//var db = new sql.Database('tournament.sqlite');
+// Database setup
+console.log('connecting to database');
+database.connect();
 
 var server = http.createServer(function (req, res) {
     var uri = url.parse(req.url)
