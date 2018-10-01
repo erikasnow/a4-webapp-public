@@ -1,30 +1,33 @@
 //change what item is selected in the inventory
 function itemSelection(inventoryNumber){
+    console.log("inventory selection")
     let itemId;
     switch (inventoryNumber) {
         case "1":
-        itemId = 1;
+        itemId = window.inventory[1];
+        console.log(window.inventory[1])
             break;
         case "2":
-        itemId= 2;
+        itemId= window.inventory[2];
             break;
         case "3":
-        itemId= 3;
+        itemId= window.inventory[3];
             break;
         case "4":
-        itemId= 4;
+        itemId= window.inventory[4];
             break;
         case "5":
-        itemId= 5;
+        itemId=window.inventory[5];
             break;
         case "6":
-        itemId= 6;
+        itemId= window.inventory[6];
             break;
     
         default:
         itemId= 0;
         break;
-    }
+    }    console.log(inventoryNumber+typeof inventoryNumber)
+
     displayItem(itemId);
 }
 function displayItem(itemId){
@@ -56,11 +59,13 @@ function addToInventory(itemId){
     var cells = cellsRow.getElementsByTagName("td");
     var emptyCell = cells[0];
 
-    for(let i = 0; i < cells; i++){
+    for(let i = 0; i < cells.length; i++){
         console.log("entered for loop")
         if(cells[i].innerHTML == ''){
             console.log("found empty cell");
             emptyCell = cells[i];
+            var num = i +1;
+            window.inventory[num] = itemId;
             break;
         }
     }
