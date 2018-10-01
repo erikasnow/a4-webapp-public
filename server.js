@@ -42,7 +42,14 @@ var server = http.createServer(function (req, res) {
             sendFile(res, 'js/characterSelection.js', 'text/javacript')
             break
         case '/js/item.js':
+<<<<<<< HEAD
             sendFile(res, 'js/items.js', 'text/javacript')
+=======
+            sendFile(res, 'js/item.js', 'text/javascript')
+            break
+        case '/placeholder.jpg':
+            sendFile(res, 'placeholder.jpg')
+>>>>>>> 3c17540363992fd7aed317f28e515074ee261021
             break
         default:
             res.end('404 not found')
