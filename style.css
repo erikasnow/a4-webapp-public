@@ -9,8 +9,7 @@
     padding:10px;
     width:60%;
     height:85%;
-    margin-left:40px;
-    margin-right:5px
+    margin-left:3%;
 }
 
 .screen {
@@ -28,12 +27,11 @@
     background:darkcyan;
 }
 
-.characterWrapper {
+.characterPromptWrapper {
     background:brown;
     float:right;
     padding:10px;
     width:30%;
     height:85%;
-    margin-left:5px;
-    margin-right:40px
+    margin-right:3%
 }
