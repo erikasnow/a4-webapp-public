@@ -18,16 +18,16 @@ function displayCharacterDescription(character){
     let text;
     switch (character) {
         case "Ally":
-           text =  " Has a cat"
+           text =  ": Has a spoiled cat, Bambi, who ocassionally helps Ally if she's so inclined."
             break;
         case "Erika":
-            text= " A strong willed woman"
+            text= ": The only girl on her wrestling team. Strong, but not the brightest."
             break;
         case "Joan":
-            text =" Very thinker"
+            text =": Very bright. Currently studying to be an engineer."
             break;
         case "Krysta":
-           text= " Very Observant"
+           text= ": Great observational skills. Aspiring to be the next Sherlock Holmes."
             break;
         default:
             break;
