@@ -1,34 +1,37 @@
 <html lang="en">
+
 <head>
     <title>CS4241 Assignment 4</title>
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.5.1.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <link rel="stylesheet" type="text/css" href="style.css" />
     <link rel="import" href="screens.html">
     <script src="js/sceneHandler.js"></script>
     <script src="js/characterSelection.js"></script>
     <meta charset="utf-8">
 </head>
+
 <body>
-    <div class="header"> <!--Title-->
+    <div class="header">
+        <!--Title-->
         <h1>Name of the Game</h1>
     </div>
 
-    <div> <!--Game-->
-        <div class="screenInventoryWrapper"> <!--screen and inventory-->
-            <div id="screen" class="screen"> <!--screen, fat-->
-                
+    <div><!--Game-->
+        <div class="screenInventoryWrapper"><!--screen and inventory-->
+            <div id="screen" class="screen"><!--screen, fat-->
                 <div id="initScreen">
                     screen
                 </div>
+
                 <script>
-                    $('#initScreen').load('screens.html');
-                </script>     
+                    $('#initScreen').load('mainScreen.html');
+                </script>
             </div>
-            <table class="inventory"> <!--inventory-->
+            <table class="inventory"><!--inventory-->
                 <tr>
-                    <th colspan="6" style="height:1%">Inventory</th> 
+                    <th colspan="6" style="height:1%">Inventory</th>
                 </tr>
-                <tr> <!--these need to be big and square so pictures can go in them-->
+                <tr><!--these need to be big and square so pictures can go in them-->
                     <td class="inventoryCell">1</td>
                     <td class="inventoryCell">2</td>
                     <td class="inventoryCell">3</td>
@@ -41,13 +44,13 @@
         <div class="characterPromptWrapper"> <!--characters and text prompt-->
             <div style="background:cornsilk;height:35%" id = "textprompt"> <!--object info-->
                 <!--this will show a picture of the object and then a description-->
-                                    <!--OR-->
+                <!--OR-->
                 <!--this will show info about what you clicked (like saying the door is locked)-->
                 object info
             </div>
-            <div style="background:burlywood;height:65%"> <!--characters, skinny-->
+            <div style="background:burlywood;height:65%"><!--characters, skinny-->
                 characters
-            </div> 
+            </div>
         </div>
     </div>
 </body>
