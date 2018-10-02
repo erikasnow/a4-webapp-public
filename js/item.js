@@ -42,16 +42,19 @@ function itemSelection(inventoryNumber){
 }
 function displayItem(itemId, inventoryNumber){
     //console.log("inspected"+itemId+ inventoryNumber +window.inventory[inventoryNumber].inspected)
-    let textprompt = document.getElementById("textprompt");
+    let textprompt = document.getElementById("objectInfo");
     let text = "";
     var pic = itemId + '.jpg';
-    var picElt = '<img src="' + pic + '" style="width:30%;height:40%">'
+    var picElt = '<img src="' + pic + '" style="width:100%;height:100%">'
     var inspectD ={id:itemId, num:inventoryNumber};
+    let picprompt = document.getElementById("objectPicture");
+    picprompt.innerHTML = picElt;
+
     //console.log("display" + inspectD.id + inspectD.num)
     if(window.inventory[inventoryNumber].inspected == false){
-        textprompt.innerHTML =picElt+  '<button id = "inspectButton">inspect</button>'+"???"+ text ;
+        textprompt.innerHTML =  '<button id = "inspectButton">inspect</button>'+"???"+ text ;
     } else {
-        textprompt.innerHTML =picElt+  '<button id= "inspectButton">inspect</button>'+itemId+ text ;
+        textprompt.innerHTML =  '<button id= "inspectButton">inspect</button>'+itemId+ text ;
     }
     var inspectbutton = document.getElementById("inspectButton");
     inspectbutton.addEventListener('click', function(){
@@ -59,13 +62,15 @@ function displayItem(itemId, inventoryNumber){
     });
 }
 function updateDisplayItem(itemId, inventoryNumber){
-    let textprompt = document.getElementById("textprompt");
+    let textprompt = document.getElementById("objectInfo");
+    let picprompt = document.getElementById("objectPicture");
     let text = "";
     var pic = itemId + '.jpg';
-    var picElt = '<img src="' + pic + '" style="width:30%;height:40%">'
+    var picElt = '<img src="' + pic + '" style="width:100%;height:100%">'
     let inspectD ={id:itemId, num:inventoryNumber};
     //console.log("update display" + inspect)
-    textprompt.innerHTML =picElt+  '<button id = "inspectButton">inspect</button>'+itemId+ text ;
+    picprompt.innerHTML = picElt;
+    textprompt.innerHTML =  '<button id = "inspectButton">inspect</button>'+itemId+ text ;
     var inspectbutton = document.getElementById("inspectButton");
     inspectbutton.addEventListener('click', function(){
         inspect(inspectD);
