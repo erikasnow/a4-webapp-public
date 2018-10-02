@@ -5,6 +5,8 @@
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.5.1.min.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css" />
     <link rel="import" href="screens.html">
+    <link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
+    <script src ="js/timer.js"></script>
     <script src="js/sceneHandler.js"></script>
     <script src="js/item.js"></script>
     <script src="js/characterSelection.js"></script>
@@ -55,7 +57,10 @@
                     object info
                 </div>
             </div>
-            <div style="background:burlywood;height:65%"><!--characters, skinny-->
+            <div id ="timerDisplay" style = "font-size:30px;text-align:center;font-family: 'Orbitron', sans-serif;height: 15%;background: white">
+
+            </div>
+            <div style="background:burlywood;height:50%"><!--characters, skinny-->
                 <table class="characterTable" >
                         <tr><td onclick="chooseCharacter('Ally')" class="characterCell"id = "charCell" value = "Ally">Ally</td></tr>
                         <tr><td onclick="chooseCharacter('Erika')" class="characterCell"id = "charCell" value = "Erika">Erika</td></tr>
