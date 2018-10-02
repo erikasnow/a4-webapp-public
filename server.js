@@ -1,12 +1,19 @@
 var http = require('http')
     , fs = require('fs')
     , url = require('url')
-    //, database = require('./database.js')
+    , database = require('./database.js')
     , port = 8080;
 
 // Database setup
 console.log('connecting to database');
-//database.connect();
+database.connect();
+
+console.log('connected to database');
+
+// Upload data (comment out)
+uploadToDatabase("data/inventory.json");
+uploadToDatabase("data/object_use.json");
+uploadToDatabase("data/scene1_interaction.json");
 
 var server = http.createServer(function (req, res) {
     var uri = url.parse(req.url)
@@ -66,5 +73,24 @@ function sendFile(res, filename, contentType) {
     fs.readFile(filename, function (error, content) {
         res.writeHead(200, { 'Content-type': contentType })
         res.end(content, 'utf-8')
-    })
+    });
+}
+
+function uploadToDatabase(filename) {
+    var stream = fs.createReadStream(filename);
+
+    stream.on('data', function (data) {
+        if (filename === "inventory.json") {
+            console.log('loading inventory database');
+            database.uploadToInventory(data);
+        } else if (filename === "object_use.json") {
+            database.uploadToObjectUse(data);
+        } else {
+            database.uploadToScene1(data);
+        }
+    });
+
+    stream.on('end', function (data) {
+        return;
+    });
 }

@@ -1,16 +1,16 @@
 const {Client} = require('pg');
 
 const client = new Client({
-    connectionString: process.env.DATABASE_URL ||
-        "postgres://zvljjxcivhgpbj:7ba4c3f46baae568b78bd1ef78d068005cec4e5961b466931bf9fb0509864786@ec2-174-129-35-61.compute-1.amazonaws.com:5432/d9aba1dijctb3j"
+    connectionString: process.env.DATABASE_URL,
+    ssl: true,
 });
 
-exports.connect = function() {
+module.exports.connect = function() {
     client.connect();
-}
+};
 
 // Player would be in terms of index numbers
-exports.isUsable = function(player, object_id) {
+module.exports.isUsable = function(player, object_id) {
     var query = "SELECT e_use, a_use, j_use, k_use FROM inventory WHERE obj_id = " + object_id + ";";
 
     client.query(query, function (err, result) {
@@ -18,9 +18,9 @@ exports.isUsable = function(player, object_id) {
             return parseInt(result.columns[player], 10);
         }
     });
-}
+};
 
-exports.getUseId = function(player, object_id) {
+module.exports.getUseId = function(player, object_id) {
     var use_id = 0;
     var player_num = isUsable(player, object_id);
 
@@ -29,9 +29,9 @@ exports.getUseId = function(player, object_id) {
     }
 
     return use_id;
-}
+};
 
-exports.getDescription = function(player, object_id) {
+module.exports.getDescription = function(player, object_id) {
     var use_id = getUserId(player, object_id);
 
     if (use_id > 0) {
@@ -46,9 +46,9 @@ exports.getDescription = function(player, object_id) {
     } else {
         return "?";
     }
-}
+};
 
-exports.getInspectResult = function(player, object_id) {
+module.exports.getInspectResult = function(player, object_id) {
     var use_id = getUseId(player, object_id);
 
     if (use_id > 0) {
@@ -64,7 +64,7 @@ exports.getInspectResult = function(player, object_id) {
     return use_id;
 }
 
-exports.getAction = function(scene_num, use_id) {
+module.exports.getAction = function(scene_num, use_id) {
     var query = "SELECT action FROM scene" + scene_num +"_interaction WHERE use_id = " + use_id + ";";
 
     client.query(query, function(err, result) {
@@ -74,4 +74,23 @@ exports.getAction = function(scene_num, use_id) {
             return "";
         }
     });
-}
+};
+
+module.exports.uploadToInventory = function(json) {
+    console.log('loading data to inventory!');
+    var query = `INSERT INTO inventory VALUES('${json.obj_id}', '${json.e_use}', '${json.a_use}', '${json.j_use}', '${json.k_use}');`;
+
+    client.query(query);
+};
+
+module.exports.uploadToObjectUse = function(json) {
+    var query = `INSERT INTO object_use VALUES('${json.use_id}', '${json.name}', '${json.description}', '${json.inspect_result}');`;
+
+    client.query(query);
+};
+
+module.exports.uploadToScene1 = function(json) {
+    var query = `INSERT INTO scene1_interaction VALUES('${json.use_id}', '${json.scene_id}', '${json.action}');`;
+
+    client.query(query);
+};
