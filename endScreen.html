@@ -7,9 +7,24 @@
     </script>
     <br>
     <h4 style="margin:auto;text-align:center">Good Job!</h4>
+    <br>
+    <table style="margin:auto;width:50%;background:whitesmoke">
+        <tr>
+            <td>Name for Score Database</td>
+            <td id="playerName" contenteditable="true" style="width:50%"></td>
+        </tr>
+    </table>
 
     <div style="text-align:center;margin-top:1%">
         <button onclick="changeScreen('mainScreen', true)" class="endScreenBtns">Return to Main Menu</button>
-        <button onclick="changeScreen('scoreScreen', true)" class="endScreenBtns">Submit Score</button>
+        <button onclick="changeScreen('scoreScreen', true);saveScore()" class="endScreenBtns">Submit Score</button>
     </div>
 </div>
+
+<script>
+    function saveScore() {
+        window.playerName = document.getElementById("playerName").innerText;
+        console.log(window.playerName);
+        //send name and score to database
+    }
+</script>
