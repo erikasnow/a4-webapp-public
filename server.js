@@ -25,20 +25,23 @@ var server = http.createServer(function (req, res) {
         case '/index.html':
             sendFile(res, 'index.html')
             break
-        case '/mainScreen.html':
-            sendFile(res, 'mainScreen.html')
+        case '/screens/mainScreen.html':
+            sendFile(res, 'screens/mainScreen.html')
             break
-        case '/rulesScreen.html':
-            sendFile(res, 'rulesScreen.html')
+        case '/screens/storyScreen.html':
+            sendFile(res, 'screens/storyScreen.html')
+            break       
+        case '/screens/rulesScreen.html':
+            sendFile(res, 'screens/rulesScreen.html')
             break
-        case '/tutorialScreen.html':
-            sendFile(res, 'tutorialScreen.html')
+        case '/screens/tutorialScreen.html':
+            sendFile(res, 'screens/tutorialScreen.html')
             break
-        case '/endScreen.html':
-            sendFile(res, 'endScreen.html')
+        case '/screens/endScreen.html':
+            sendFile(res, 'screens/endScreen.html')
             break 
-        case '/scoreScreen.html':
-            sendFile(res, 'scoreScreen.html')
+        case '/screens/scoreScreen.html':
+            sendFile(res, 'screens/scoreScreen.html')
             break
         case '/style.css':
             sendFile(res, 'style.css', 'text/css')
@@ -52,8 +55,14 @@ var server = http.createServer(function (req, res) {
         case '/js/item.js':
             sendFile(res, 'js/item.js', 'text/javascript')
             break
+        case '/js/timer.js':
+            sendFile(res, 'js/timer.js', 'text/javascript')
+            break
         case '/js/mainScreen.js':
             sendFile(res, 'js/mainScreen.js', 'text/javascript')
+            break
+        case '/assets/digital-7.regular.ttf':
+            sendFile(res, 'js/mainScreen.js')
             break
         case '/placeholder.jpg':
             sendFile(res, 'placeholder.jpg')

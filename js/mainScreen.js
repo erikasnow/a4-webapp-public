@@ -14,6 +14,8 @@ function start() {
     window.inventory[4]= {id:"", inspected:false};
     window.inventory[5]= {id:"", inspected:false};
     window.inventory[6]= {id:"", inspected:false};
+    window.timerTime=null;
+
 }
 
 //Start playing music if we want any

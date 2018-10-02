@@ -35,5 +35,8 @@ function displayCharacterDescription(character){
     }
     console.log(text)
     textprompt.innerHTML = character+ text;
+
+    var inventoryHeader = document.getElementById("inventoryHeader");
+    inventoryHeader.innerText = "Current Character: " + character;
 }
 
