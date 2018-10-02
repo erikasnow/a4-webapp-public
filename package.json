@@ -17,6 +17,8 @@
   "bugs": {
     "url": "https://github.com/erikasnow/a4-webapp/issues"
   },
-  "dependencies":{},
+  "dependencies": {
+    "pg": "^7.4.3"
+  },
   "homepage": "https://github.com/erikasnow/a4-webapp#readme"
 }
