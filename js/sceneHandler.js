@@ -1,5 +1,5 @@
 function changeScreen(newScreen, removeInventory) {
-    newScreen = newScreen + '.html';
+    newScreen = 'screens/' + newScreen + '.html';
     $('#initScreen').load(newScreen);
 
     if(removeInventory){
