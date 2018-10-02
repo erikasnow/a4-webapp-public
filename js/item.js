@@ -61,10 +61,10 @@ function displayItem(itemId, inventoryNumber){
         inspect(inspectD);
     });
 }
-function updateDisplayItem(itemId, inventoryNumber){
+function updateDisplayItem(itemId, inventoryNumber, description = ""){
     let textprompt = document.getElementById("objectInfo");
     let picprompt = document.getElementById("objectPicture");
-    let text = "";
+    let text =description;
     var pic = itemId + '.jpg';
     var picElt = '<img src="' + pic + '" style="width:100%;height:100%">'
     let inspectD ={id:itemId, num:inventoryNumber};
@@ -85,6 +85,21 @@ function inspect(inspected){
     let inventoryNumber= inspected.num;
     //console.log("line "+itemId+ "   " +inventoryNumber + typeof inventoryNumber)
     window.inventory[inventoryNumber].inspected = true;
+    //xhr = new XMLHttpRequest();
+    //xhr.onreadystatechange = handle_res;
+    //hr.open('POST', "/itemGet");
+    //xhr.setRequestHeader('Content-type', 'application/json');
+    //xhr.send(JSON.stringify(itemId));
+    function handle_res() {
+        if (this.readyState != 4) return;
+        if (this.status != 200) {
+            console.log("ERROR");
+        }
+    }
+    //xhr.onload = function () {
+    //     let text = JSON.parse(this.responseText.description)
+    //     updateDisplayItem(itemId, inventoryNumber, text);
+    //}
     updateDisplayItem(itemId, inventoryNumber);
 }
 

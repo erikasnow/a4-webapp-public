@@ -21,14 +21,14 @@ p {
 
 .screen {
     background:cadetblue;
-    height:85%;
+    height:81%;
     min-height: 300px;
 }
 
 .inventory {
     background:wheat;
     width:100%;
-    height:15%;
+    height:20%;
 }
 
 .inventoryCell {
