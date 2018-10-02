@@ -41,36 +41,44 @@ function itemSelection(inventoryNumber){
     displayItem(itemId, parseInt(inventory,10));
 }
 function displayItem(itemId, inventoryNumber){
-    console.log("inspected"+itemId+ inventoryNumber +window.inventory[inventoryNumber].inspected)
+    //console.log("inspected"+itemId+ inventoryNumber +window.inventory[inventoryNumber].inspected)
     let textprompt = document.getElementById("textprompt");
     let text = "";
     var pic = itemId + '.jpg';
     var picElt = '<img src="' + pic + '" style="width:30%;height:40%">'
-    let inspect ={id:itemId, num:inventoryNumber};
+    var inspectD ={id:itemId, num:inventoryNumber};
+    //console.log("display" + inspectD.id + inspectD.num)
     if(window.inventory[inventoryNumber].inspected == false){
-        textprompt.innerHTML =picElt+  '<button onclick="inspect(\''+inspect+'\')">inspect</button>'+"???"+ text ;
+        textprompt.innerHTML =picElt+  '<button id = "inspectButton">inspect</button>'+"???"+ text ;
     } else {
-        textprompt.innerHTML =picElt+  '<button onclick="inspect(\''+inspect+'\')">inspect</button>'+itemId+ text ;
+        textprompt.innerHTML =picElt+  '<button id= "inspectButton">inspect</button>'+itemId+ text ;
     }
+    var inspectbutton = document.getElementById("inspectButton");
+    inspectbutton.addEventListener('click', function(){
+        inspect(inspectD);
+    });
 }
 function updateDisplayItem(itemId, inventoryNumber){
     let textprompt = document.getElementById("textprompt");
     let text = "";
     var pic = itemId + '.jpg';
     var picElt = '<img src="' + pic + '" style="width:30%;height:40%">'
-    let inspect ={id:itemId, num:inventoryNumber};
-
-
-    textprompt.innerHTML =picElt+  '<button onclick="inspect(\''+inspect+'\')">inspect</button>'+itemId+ text ;
+    let inspectD ={id:itemId, num:inventoryNumber};
+    //console.log("update display" + inspect)
+    textprompt.innerHTML =picElt+  '<button id = "inspectButton">inspect</button>'+itemId+ text ;
+    var inspectbutton = document.getElementById("inspectButton");
+    inspectbutton.addEventListener('click', function(){
+        inspect(inspectD);
+    });
 }
 
 //inspect the item 
 //on inspect button
 function inspect(inspected){
-    console.log("INSPECTED"+ inspected )
+    //console.log("INSPECTED"+ inspected.id + inspected.num )
     let itemId = inspected.id;
     let inventoryNumber= inspected.num;
-    console.log("line "+itemId+ "   " +inventoryNumber + typeof inventoryNumber)
+    //console.log("line "+itemId+ "   " +inventoryNumber + typeof inventoryNumber)
     window.inventory[inventoryNumber].inspected = true;
     updateDisplayItem(itemId, inventoryNumber);
 }
