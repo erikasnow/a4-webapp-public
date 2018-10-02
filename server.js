@@ -11,9 +11,9 @@ database.connect();
 console.log('connected to database');
 
 // Upload data (comment out)
-//uploadToDatabase("inventory", "data/inventory.json");
-//uploadToDatabase("object_use", "data/object_use.json");
-//uploadToDatabase("scene1_interaction", "data/scene1_interaction.json");
+uploadToDatabase("inventory", "data/inventory.json");
+uploadToDatabase("object_use", "data/object_use.json");
+uploadToDatabase("scene1_interaction", "data/scene1_interaction.json");
 
 var server = http.createServer(function (req, res) {
     var uri = url.parse(req.url)

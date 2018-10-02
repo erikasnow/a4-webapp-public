@@ -76,9 +76,18 @@ exports.getAction = function(scene_num, use_id) {
     });
 };
 
+function clearPreviousData(table_name) {
+    var query = `DELETE FROM ${table_name}`;
+
+    client.query(query, function(err, result) {
+    });
+}
+
 exports.uploadToInventory = function(data) {
     var i;
-    console.log('loading data to inventory!');
+    console.log('loading data to inventory!')
+
+    clearPreviousData('inventory');
 
     for (i = 0; i < data.length; i++) {
         var query = `INSERT INTO inventory VALUES('${data[i].obj_id}', '${data[i].e_use}', '${data[i].a_use}', '${data[i].j_use}', '${data[i].k_use}');`;
@@ -91,6 +100,8 @@ exports.uploadToObjectUse = function(data) {
     var i;
     console.log('loading data to object use!');
 
+    clearPreviousData('object_use');
+
     for (i = 0; i < data.length; i++) {
         var query = `INSERT INTO object_use VALUES('${data[i].use_id}', '${data[i].name}', '${data[i].description}', '${data[i].inspect_result}');`;
         client.query(query, function (err, result) {
@@ -101,6 +112,8 @@ exports.uploadToObjectUse = function(data) {
 exports.uploadToScene1 = function(data) {
     var i;
     console.log('loading data to interaction!');
+
+    clearPreviousData('scene1_interaction');
 
     for (i = 0; i < data.length; i++) {
         var query = `INSERT INTO scene1_interaction VALUES('${data[i].use_id}', '${data[i].scene_id}', '${data[i].action}');`;

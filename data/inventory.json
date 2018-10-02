@@ -1,2 +1,2 @@
-[{"obj_id": "rock", "e_use": "0", "a_use": "1", "j_use": "2", "k_use": "3"},
-  {"obj_id": "paper", "e_use": "2", "a_use": "1", "j_use": "3", "k_use": "0"}]
+[{"obj_id": "rock", "e_use": "5", "a_use": "1", "j_use": "2", "k_use": "3"},
+  {"obj_id": "paper", "e_use": "2", "a_use": "1", "j_use": "3", "k_use": "10"}]

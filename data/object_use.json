@@ -1,2 +1,2 @@
-[{"use_id": "rock5", "name": "", "description": "", "inspect_result": "rock5"},
-  {"use_id": "rock0", "name": "", "description": "", "inspect_result": "rock5"}]
+[{"use_id": "rock5", "name": "hello", "description": "", "inspect_result": "rock5"},
+  {"use_id": "rock0", "name": "", "description": "again", "inspect_result": "rock5"}]
