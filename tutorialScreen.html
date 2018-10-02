@@ -1,4 +1,10 @@
 <div class="tutorialScreen">
+    <div>
+        <!--countdown clock-->
+        <script>
+            countdown(100);
+        </script>
+    </div>
     Level One!!!
     <div>
         <img src="placeholder.jpg" style="width:20%;height:20%" onclick="addToInventory('placeholder')">
@@ -8,3 +14,12 @@
         <button onclick="changeScreen('endScreen', true)">End Game!</button>
     </div>
 </div>
+
+<script>
+    function countdown(duration) {
+        setInterval(update(duration), 1000);
+    }
+    function update(time){
+        time--;
+    }
+</script>

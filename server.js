@@ -21,6 +21,9 @@ var server = http.createServer(function (req, res) {
         case '/mainScreen.html':
             sendFile(res, 'mainScreen.html')
             break
+        case '/storyScreen.html':
+            sendFile(res, 'storyScreen.html')
+            break       
         case '/rulesScreen.html':
             sendFile(res, 'rulesScreen.html')
             break
