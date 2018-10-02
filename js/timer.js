@@ -18,7 +18,7 @@ function startTimer(duration) {
         //display.textContent = minutes + ":" + seconds; 
         var timer = document.getElementById("timerDisplay");
         timer.innerText= minutes+":"+seconds;
-        window.timer = minutes+":"+seconds;
+        window.timer = minutes*60+seconds;
         if (diff <= 0) {
             // add one second so that the count down starts at the full duration
             // example 05:00 not 04:59

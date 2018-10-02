@@ -1,12 +1,15 @@
 <div class="endScreen">
     <h3 style="margin:auto;text-align:center;padding-top:1%">Level Completed!!!</h3>
     <br>
-    <h4 style="margin:auto;text-align:center">Score: </h4>
+    <h4 id="score" style="margin:auto;text-align:center">Score: </h4>
+    <script>
+        document.getElementById("score").innerHTML += window.timerTime;
+    </script>
     <br>
     <h4 style="margin:auto;text-align:center">Good Job!</h4>
 
     <div style="text-align:center;margin-top:1%">
         <button onclick="changeScreen('mainScreen', true)" class="endScreenBtns">Return to Main Menu</button>
-        <button onclick="changeScreen('scoreScreen', true)" class="endScreenBtns">View High Scores</button>
+        <button onclick="changeScreen('scoreScreen', true)" class="endScreenBtns">Submit Score</button>
     </div>
 </div>
