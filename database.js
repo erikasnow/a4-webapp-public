@@ -19,21 +19,47 @@ function getPlayerIndex(player) {
 }
 
 exports.isUsable = function(player, object_id) {
+    console.log("ID "+ object_id)
     var query = `SELECT e_use, a_use, j_use, k_use FROM inventory WHERE obj_id = '${object_id}';`;
     var index = getPlayerIndex(player);
+    var resultID ;
 
     client.query(query, function (err, result) {
         if (result.rows.length === 1) {
-            return result.columns[index];
+            //console.log(result)
+            //console.log(result.rows[0].e_use)
+            console.log("Indes"+ index)
+            console.log(result.rows[0].e_use)
+
+            switch(index) {
+                
+                case 0:
+                    resultID= result.rows[0].e_use;
+                    break;
+                case 1:
+                resultID= result.rows[0].a_use;
+                    break;
+                case 2:
+                    console.log(result.rows[0].j_use)
+                    resultID= result.rows[0].j_use;
+                    break;
+                case 3:
+                resultID= result.rows[0].k_use;
+                    break;
+            }
+
+            //return result.columns[index];
+            console.log("RESULT"+resultID)
+            return resultID;
         }
     });
-
-    return null;
+    
 };
 
 exports.getUseId = function(player, object_id) {
     var use_id = null;
-    var num = isUsable(player, object_id);
+    var num = exports.isUsable(player, object_id);
+    console.log("Num"+ num)
 
     if (num !== null) { // Usable object to player
         use_id = object_id + num;
@@ -59,18 +85,22 @@ exports.getDescription = function(player, object_id) {
     }
 };
 
-exports.getInspectResult = function(player, use_id, res) {
+exports.getInspectResult = function(player, obj_id, res) {
+    var use_id = exports.getUseId(player, obj_id);
+    var use_id = obj_id+use_id
+    console.log("INSPECT")
+    console.log("ID"+use_id)
     var query = `SELECT inspect_result FROM object_use WHERE use_id = '${use_id}';`;
 
     client.query(query, function(err, result) {
-        console.log(result.rows[0].inspect_result)
+        console.log(result.rows[0])
         if (result.rows.length === 1) {
             res.end(result.rows[0].inspect_result);
         } else {
             res.end();
         }
     });
-}
+};
 
 exports.getAction = function(scene_item, use_id) {
     var query = `SELECT action FROM scene1_interaction WHERE use_id = '${use_id}' AND scene_id = '${scene_item}';`;

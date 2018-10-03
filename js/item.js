@@ -103,8 +103,9 @@ function inspect(inspected) {
     let inventoryNumber = inspected.num;
     //console.log("line "+itemId+ "   " +inventoryNumber + typeof inventoryNumber)
     window.inventory[inventoryNumber].inspected = true;
-
-    var result = getInspectResultId(window.character, itemId);
+    var id = itemId
+     getInspectResultId(window.character, id);
+     var result = window.inspectResult
     console.log("result" + result)
     updateDisplayItem(itemId, inventoryNumber);
 }

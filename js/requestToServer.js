@@ -4,6 +4,11 @@ var addReq = new XMLHttpRequest();
 var scoreReq = new XMLHttpRequest();
 
 // Get inspect use_id
+inspectReq.onreadystatechange = function() {
+    if (this.readyState === 4 && this.status === 200) {
+        window.inspectResult = this.responseText;
+    }
+};
 
 // Get interaction
 actionReq.onreadystatechange = function() {
@@ -62,11 +67,11 @@ function getAction() {
 }
 
 // Need to figure out what to give this, and what we want - e.g use_id? inspect_result_id? (which is a use_id)
-function getInspectResultId(player, use_id) {
+function getInspectResultId(player, obj_id) {
     var inspecting = {};
 
     inspecting.player = player;
-    inspecting.use_id = use_id;
+    inspecting.obj_id = obj_id;
 
     inspectReq.open('POST', '/inspect');
     inspectReq.setRequestHeader('Content-type', 'application/json');
