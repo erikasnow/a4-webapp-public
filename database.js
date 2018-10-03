@@ -88,10 +88,12 @@ exports.getAction = function(scene_item, use_id) {
 };
 
 exports.getAllScores = function() {
-    var query = 'SELECT name, score FROM score;';
+    var query = 'SELECT * FROM score;';
 
     client.query(query, function(err, result) {
-        return result;
+        if (result.rows.length > 0) {
+            return result;
+        }
     });
 };
 
