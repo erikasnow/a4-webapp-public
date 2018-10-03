@@ -9,6 +9,7 @@ exports.connect = function() {
     client.connect();
 };
 
+/*
 function getPlayerIndex(player) {
     switch(player) {
         case 'Erika': return 0;
@@ -17,18 +18,23 @@ function getPlayerIndex(player) {
         case 'Krysta': return 3;
     }
 }
+*/
 
 exports.isUsable = function(player, object_id) {
     var query = `SELECT e_use, a_use, j_use, k_use FROM inventory WHERE obj_id = '${object_id}';`;
-    var index = getPlayerIndex(player);
 
     client.query(query, function (err, result) {
         if (result.rows.length === 1) {
-            return result.columns[index];
+            switch(player) {
+                case 'Erika': return result.rows[0].e_use;
+                case 'Ally': return result.rows[0].a_use;
+                case 'Joan': return result.rows[0].j_use;
+                case 'Krysta': return result.rows[0].k_use;
+            }
+        } else {
+            return null;
         }
     });
-
-    return null;
 };
 
 exports.getUseId = function(player, object_id) {
@@ -37,6 +43,7 @@ exports.getUseId = function(player, object_id) {
 
     if (num !== null) { // Usable object to player
         use_id = object_id + num;
+        console.log('use_id: ' + use_id);
     }
 
     return use_id;
@@ -60,7 +67,13 @@ exports.getDescription = function(player, object_id) {
 };
 
 exports.getInspectResult = function(player, obj_id, res) {
+    var id = getUseId(player, obj_id);
+    console.log('Id is: ' + id);
+
+    console.log("Calling inspect result");
+
     var use_id = getUseId(player, obj_id);
+    console.log('Getting inspect result, use_id: ' + use_id);
     var query = `SELECT inspect_result FROM object_use WHERE use_id = '${use_id}';`;
 
     client.query(query, function(err, result) {
