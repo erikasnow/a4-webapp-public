@@ -49,9 +49,6 @@ var server = http.createServer(function (req, res) {
         case '/js/sceneHandler.js':
             sendFile(res, 'js/sceneHandler.js', 'text/javacript')
             break
-        case '/js/sceneGeneral.js':
-            sendFile(res, 'js/sceneGeneral.js', 'text/javacript')
-            break
         case '/js/characterSelection.js':
             sendFile(res, 'js/characterSelection.js', 'text/javacript')
             break
