@@ -51,7 +51,9 @@ p {
     width:30%;
     height:94%;
     padding:1%;
+    
 }
+
 
 .objectInfo {
     background:yellow;
@@ -79,7 +81,7 @@ p {
 }
 
 .characterCellMain {
-    background: red;
+    background: rgb(235, 138, 138);
     width: 25%;
     text-align: center;
 }
