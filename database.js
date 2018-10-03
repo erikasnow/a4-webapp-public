@@ -63,6 +63,7 @@ exports.getInspectResult = function(player, use_id, res) {
     var query = `SELECT inspect_result FROM object_use WHERE use_id = '${use_id}';`;
 
     client.query(query, function(err, result) {
+        console.log(result.rows[0].inspect_result)
         if (result.rows.length === 1) {
             res.end(result.rows[0].inspect_result);
         } else {
