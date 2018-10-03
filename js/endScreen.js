@@ -6,9 +6,11 @@ function displayScore(score){
 
 }
 
+/*
 function addScore(name, score){
 
 }
+*/
 
 function showHighScores(){
 
