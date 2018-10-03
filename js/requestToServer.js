@@ -7,6 +7,7 @@ var scoreReq = new XMLHttpRequest();
 inspectReq.onreadystatechange = function() {
     if (this.readyState === 4 && this.status === 200) {
         //call function with use_id as a result of inspection of object
+        //item name, description based on the character (current id of object)
     }
 };
 
