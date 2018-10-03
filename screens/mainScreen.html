@@ -3,13 +3,14 @@
     <p style="text-align:center">Choose a character from below </p>
     <table class="characterTableMain">
         <tr>
-            <td onclick="chooseCharacter('Ally')" class="characterCellMain"id = "charCell" value = "Ally"><img height = "80%"src ="/assets/characters/Ally.png">Ally</td>
-            <td onclick="chooseCharacter('Erika')" class="characterCellMain"id = "charCell"  value = "Erika"><img height = "80%"src ="/assets/characters/Erika.png">Erika</td>
-            <td onclick="chooseCharacter('Joan')" class="characterCellMain"id = "charCell" value = "Joan"><img height = "75%"src ="/assets/characters/Joan.png">Joan</td> 
-            <td onclick="chooseCharacter('Krysta')" class="characterCellMain"id = "charCell" value = "Krysta"><img height = "50%"src ="/assets/characters/Krysta.png">Krysta</td>
+            <td onclick=" updateStartButton();chooseCharacter('Ally')" class="characterCellMain"id = "charCell" value = "Ally"><img height = "60%"src ="/assets/characters/Ally.png">Ally</td>
+            <td onclick=" updateStartButton();chooseCharacter('Erika')" class="characterCellMain"id = "charCell"  value = "Erika"><img height = "60%"src ="/assets/characters/Erika.png">Erika</td>
+            <td onclick=" updateStartButton();chooseCharacter('Joan')" class="characterCellMain"id = "charCell" value = "Joan"><img height = "55%"src ="/assets/characters/Joan.png">Joan</td> 
+            <td onclick=" updateStartButton();chooseCharacter('Krysta')" class="characterCellMain"id = "charCell" value = "Krysta"><img height = "30%"src ="/assets/characters/Krysta.png">Krysta</td>
         </tr>
     </table>
     <div style="text-align:center;margin-top:1%">
-        <button onclick="start();changeScreen('storyScreen', true)" class="screenBtns">Start!</button>
+        <button disabled id="StartBtn" onclick="start();changeScreen('storyScreen', true)" class="screenBtns">Start!</button>
     </div>
+
 </div>
