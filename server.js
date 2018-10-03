@@ -67,6 +67,12 @@ var server = http.createServer(function (req, res) {
         case '/placeholder.jpg':
             sendFile(res, 'placeholder.jpg')
             break
+        case '/inspect':
+            inspectObject(req, res);
+            break
+        case '/interaction':
+            getInteraction(req, res);
+            break
         default:
             res.end('404 not found')
     }
@@ -83,6 +89,30 @@ function sendFile(res, filename, contentType) {
         res.writeHead(200, { 'Content-type': contentType })
         res.end(content, 'utf-8')
     });
+}
+
+function inspectObject(req, res) {
+    var input = [];
+
+    req.on('data', function(data) {
+        input.push(JSON.parse(data));
+    });
+
+    req.on('end', function() {
+        res.end(database.getInspectResult(input[0].player, input[0].obj_id));
+    })
+}
+
+function getInteraction(req, res) {
+    var input = [];
+
+    req.on('data', function(data) {
+        input.push(JSON.parse(data));
+    });
+
+    req.on('end', function() {
+        res.end(database.getAction(input[0].scene_id, input[0].item_id));
+    })
 }
 
 function uploadToDatabase(table, filename) {
