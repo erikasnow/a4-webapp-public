@@ -66,6 +66,7 @@ p {
     width:70%;
     height:60%;
     margin: auto;
+    cursor: pointer;
 }
 
 .characterTable {
@@ -83,19 +84,19 @@ p {
     text-align: center;
 }
 
+.characterCell {
+    cursor: pointer;
+}
+
 td {
     border-collapse: collapse;
     border: 2px solid rgb(34, 32, 32);
 }
 
-.mainScreenBtns {
+.screenBtns {
     margin: auto;
     min-width: 50px;
-}
-
-.endScreenBtns {
-    margin: auto;
-    min-width: 50px;
+    cursor: pointer;
 }
 
 #disabler {
