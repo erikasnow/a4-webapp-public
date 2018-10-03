@@ -12,21 +12,25 @@ function itemSelection(inventoryNumber) {
             //console.log(window.inventory[1])
             inventory = 1;
             description = window.inventory[1].description
+            window.activeSlot = 1;
             break;
         case "2":
             itemId = window.inventory[2].id;
             inventory = 2;
             description = window.inventory[2].description
+            window.activeSlot = 2;
             break;
         case "3":
             itemId = window.inventory[3].id;
             inventory = 3;
             description = window.inventory[3].description
+            window.activeSlot = 3;
             break;
         case "4":
             itemId = window.inventory[4].id;
             inventory = 4;
             description = window.inventory[4].description
+            window.activeSlot = 4;
             break;
         case "5":
             itemId = window.inventory[5].id;
@@ -37,6 +41,7 @@ function itemSelection(inventoryNumber) {
             itemId = window.inventory[6].id;
             inventory = 6;
             description = window.inventory[6].description
+            window.activeSlot = 6;
             break;
         default:
             itemId = 0;
@@ -153,10 +158,10 @@ function addToInventory(itemId) {
     //console.log("should have added picture to inventory");
 }
 
-function deleteFromInventory(inventorySlot) {
+function deleteFromInventory() {
     var cellsRow = document.getElementById("inventoryCells");
     var cells = cellsRow.getElementsByTagName("td");
-    cells[inventorySlot].innerHTML= "";
+    cells[window.activeSlot].innerHTML= "";
     var prompt = document.getElementById("objectInfo");
     prompt.innerHTML="";
     var picprompt = document.getElementById("objectPicture");
@@ -164,6 +169,6 @@ function deleteFromInventory(inventorySlot) {
     //switch to scene 1
     window.inventoryActive = "";
     window.inventoryActive2 = "";
-    window.inventory[inventorySlot]= {id:"", inspected:false};
+    window.inventory[inventorySlot] = {id:"", inspected:false};
 
 }
