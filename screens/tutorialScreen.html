@@ -3,8 +3,10 @@
         <!--background image-->
         <img src="assets/scenes/mansion.png" style="width:90%;height:90%">
         <!--trees-->
-        <img src="assets/items/tree.png" style="width:6%;height:12%;position:absolute;bottom:35%;right:41%">
-        <img src="assets/items/tree.png" style="width:6%;height:12%;position:absolute;bottom:35%;right:86%">
+        <img id="rightTree" src="assets/items/tree.png" style="width:6%;height:12%;position:absolute;bottom:35%;right:41%" onclick="imageMove('rightTree', 37, 35)">
+        <img id="leftTree" src="assets/items/tree.png" style="width:6%;height:12%;position:absolute;bottom:35%;right:86%" onclick="imageMove('leftTree', 90, 35)">
+        <!--weeds-->
+        <img id="catnip" src="assets/items/catnip.png" style="width:5%;height:7%;position:absolute;bottom:25%;right:80%" onclick="imageDisappear('catnip');addToInventory('catnip')">
     </div>
     <div style="text-align:center;margin-top:1%">
         <!--placeholder-->

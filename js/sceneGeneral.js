@@ -4,29 +4,19 @@ function itemclick(itemId){
 }
 
 //dissapear
-function imageDisappear(imageName){
-
+function imageDisappear(imageId){
+    document.getElementById(imageId).style.display = "none";
 }
 
 function imageAppear(imageName, xpos, ypos){
 
 }
 
-function imageMove(imageName, movepos, direction){
-    switch (direction) {
-        case UP:
-            
-            break;
-        case DOWN:
-            
-            break;
-        case LEFT:
-            
-            break;
-        case RIGHT:
-            
-            break;
-        default:
-            break;
-    }
+//movepos is a percentage, everything is done off of the bottom right corner
+function imageMove(imageId, x, y){
+    var image = document.getElementById(imageId);
+    x = x + '%';
+    image.style.right = x;
+    y = y + '%';
+    image.style.bottom = y;
 }

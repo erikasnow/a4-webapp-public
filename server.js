@@ -49,6 +49,9 @@ var server = http.createServer(function (req, res) {
         case '/js/sceneHandler.js':
             sendFile(res, 'js/sceneHandler.js', 'text/javacript')
             break
+        case '/js/sceneGeneral.js':
+            sendFile(res, 'js/sceneGeneral.js', 'text/javacript')
+            break
         case '/js/characterSelection.js':
             sendFile(res, 'js/characterSelection.js', 'text/javacript')
             break
@@ -71,20 +74,8 @@ var server = http.createServer(function (req, res) {
         case '/assets/items/tree.png':
             sendFile(res, 'assets/items/tree.png')
             break
-        case '/assets/items/placeholder.png':
-            sendFile(res, 'assets/items/placeholder.png')
-            break
-        case '/assets/items/vermiOne.png':
-            sendFile(res, 'assets/items/vermiOne.png')
-            break
-        case '/assets/items/vermiTwo.png':
-            sendFile(res, 'assets/items/vermiTwo.png')
-            break
-        case '/assets/items/worm.png':
-            sendFile(res, 'assets/items/worm.png')
-            break
-        case '/assets/items/wormCompost.png':
-            sendFile(res, 'assets/items/wormCompost.png')
+        case '/assets/items/catnip.png':
+            sendFile(res, 'assets/items/catnip.png')
             break
         case '/assets/items/cat.png':
             sendFile(res, 'assets/items/cat.png')

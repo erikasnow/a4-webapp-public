@@ -34,6 +34,7 @@ p {
 .inventoryCell {
     background:darkcyan;
     width:16%;
+    text-align: center;
 }
 
 .characterPromptWrapper {
