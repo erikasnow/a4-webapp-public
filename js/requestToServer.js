@@ -6,8 +6,7 @@ var scoreReq = new XMLHttpRequest();
 // Get inspect use_id
 inspectReq.onreadystatechange = function() {
     if (this.readyState === 4 && this.status === 200) {
-        //call function with use_id as a result of inspection of object
-        //item name, description based on the character (current id of object)
+        window.inspectResult = this.responseText;
     }
 };
 
@@ -68,8 +67,13 @@ function getAction() {
 }
 
 // Need to figure out what to give this, and what we want - e.g use_id? inspect_result_id? (which is a use_id)
-function getInspectUseId() {
-    inspectReq.open('GET', '/inspect');
-    scoreReq.setRequestHeader('Content-type', 'application/json');
-    inspectReq.send();
+function getInspectResultId(player, obj_id) {
+    var inspecting = {};
+
+    inspecting.player = player;
+    inspecting.obj_id = obj_id;
+
+    inspectReq.open('POST', '/inspect');
+    inspectReq.setRequestHeader('Content-type', 'application/json');
+    inspectReq.send(JSON.stringify(inspecting));
 }

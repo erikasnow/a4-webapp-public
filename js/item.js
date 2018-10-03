@@ -103,21 +103,9 @@ function inspect(inspected) {
     let inventoryNumber = inspected.num;
     //console.log("line "+itemId+ "   " +inventoryNumber + typeof inventoryNumber)
     window.inventory[inventoryNumber].inspected = true;
-    //xhr = new XMLHttpRequest();
-    //xhr.onreadystatechange = handle_res;
-    //hr.open('POST', "/itemGet");
-    //xhr.setRequestHeader('Content-type', 'application/json');
-    //xhr.send(JSON.stringify(itemId));
-    function handle_res() {
-        if (this.readyState != 4) return;
-        if (this.status != 200) {
-            console.log("ERROR");
-        }
-    }
-    //xhr.onload = function () {
-    //     let text = JSON.parse(this.responseText.description)
-    //     updateDisplayItem(itemId, inventoryNumber, text);
-    //}
+
+    var result = getInspectResultId(window.character, itemId);
+    console.log("result" + result)
     updateDisplayItem(itemId, inventoryNumber);
 }
 

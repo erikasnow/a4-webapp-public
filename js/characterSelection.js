@@ -16,6 +16,7 @@ function updateStartButton(){
     var btn = document.getElementById("StartBtn");
     btn.removeAttribute("disabled")
 }
+
 //put character information in text above
 function displayCharacterDescription(character){
     let textprompt = document.getElementById("objectInfo");
