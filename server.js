@@ -49,6 +49,9 @@ var server = http.createServer(function (req, res) {
         case '/js/sceneHandler.js':
             sendFile(res, 'js/sceneHandler.js', 'text/javacript')
             break
+        case '/js/sceneGeneral.js':
+            sendFile(res, 'js/sceneGeneral.js', 'text/javacript')
+            break
         case '/js/characterSelection.js':
             sendFile(res, 'js/characterSelection.js', 'text/javacript')
             break
@@ -71,23 +74,26 @@ var server = http.createServer(function (req, res) {
         case '/assets/items/tree.png':
             sendFile(res, 'assets/items/tree.png')
             break
-        case '/assets/items/placeholder.png':
-            sendFile(res, 'assets/items/placeholder.png')
+        case '/assets/items/catnip.png':
+            sendFile(res, 'assets/items/catnip.png')
             break
-        case '/assets/items/vermiOne.png':
-            sendFile(res, 'assets/items/vermiOne.png')
+        case '/assets/items/doorLeft.png':
+            sendFile(res, 'assets/items/doorLeft.png')
             break
-        case '/assets/items/vermiTwo.png':
-            sendFile(res, 'assets/items/vermiTwo.png')
+        case '/assets/items/doorRight.png':
+            sendFile(res, 'assets/items/doorRight.png')
             break
-        case '/assets/items/worm.png':
-            sendFile(res, 'assets/items/worm.png')
+        case '/assets/items/window.png':
+            sendFile(res, 'assets/items/window.png')
             break
-        case '/assets/items/wormCompost.png':
-            sendFile(res, 'assets/items/wormCompost.png')
+        case '/assets/items/boardedwindow.png':
+            sendFile(res, 'assets/items/boardedwindow.png')
             break
-        case '/assets/items/cat.png':
-            sendFile(res, 'assets/items/cat.png')
+        case '/assets/items/rock.png':
+            sendFile(res, 'assets/items/rock.png')
+            break
+        case '/assets/items/lighter.png':
+            sendFile(res, 'assets/items/lighter.png')
             break
         case '/inspect':
             inspectObject(req, res)
@@ -103,6 +109,18 @@ var server = http.createServer(function (req, res) {
             break
         case '/assets/Waypoint_D.ogg':
             sendFile(res,'assets/Waypoint_D.ogg', 'audio/ogg' )
+            break
+        case '/assets/characters/Erika.png':
+            sendFile(res,'assets/characters/Erika.png' )
+            break
+        case '/assets/characters/Ally.png':
+            sendFile(res,'assets/characters/Ally.png' )
+            break
+        case '/assets/characters/Joan.png':
+            sendFile(res,'assets/characters/Joan.png' )
+            break
+        case '/assets/characters/Krysta.png':
+            sendFile(res,'assets/characters/Krysta.png' )
             break
         default:
             res.end('404 not found')

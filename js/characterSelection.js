@@ -2,6 +2,9 @@
 function chooseCharacter(character){
     var picprompt = document.getElementById("objectPicture");
     picprompt.innerHTML= "";
+    var pic = 'assets/characters/'+character + '.png';
+    var picElt = '<img src="' + pic + '" style="width:60%;height:100%">'
+    picprompt.innerHTML=picElt;
     console.log("character"+character)
     window.character = character;
     console.log(window.character)
@@ -9,6 +12,10 @@ function chooseCharacter(character){
     displayCharacterDescription(character)
 }
 
+function updateStartButton(){
+    var btn = document.getElementById("StartBtn");
+    btn.removeAttribute("disabled")
+}
 
 //don't know if this will be different from choose character
 function switchCharacter(){

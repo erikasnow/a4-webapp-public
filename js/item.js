@@ -1,90 +1,101 @@
 //can call a function in an other .js file if that js file is declared before the one prior
 
 //change what item is selected in the inventory
-function itemSelection(inventoryNumber){
+function itemSelection(inventoryNumber) {
     //console.log("inventory selection")
     let itemId;
-    let inventory =0;
+    let inventory = 0;
+    let description ="";
     switch (inventoryNumber) {
         case "1":
-        itemId = window.inventory[1].id;
-        //console.log(window.inventory[1])
-        inventory =1;
+            itemId = window.inventory[1].id;
+            //console.log(window.inventory[1])
+            inventory = 1;
+            description = window.inventory[1].description
             break;
         case "2":
-        itemId= window.inventory[2].id;
-        inventory =2;
+            itemId = window.inventory[2].id;
+            inventory = 2;
+            description = window.inventory[2].description
             break;
         case "3":
-        itemId= window.inventory[3].id;
-        inventory =3;
+            itemId = window.inventory[3].id;
+            inventory = 3;
+            description = window.inventory[3].description
             break;
         case "4":
-        itemId= window.inventory[4].id;
-        inventory =4;
+            itemId = window.inventory[4].id;
+            inventory = 4;
+            description = window.inventory[4].description
             break;
         case "5":
-        itemId=window.inventory[5].id;
-        inventory =5;
+            itemId = window.inventory[5].id;
+            inventory = 5;
+            description = window.inventory[5].description
             break;
         case "6":
-        itemId= window.inventory[6].id;
-        inventory =6;
+            itemId = window.inventory[6].id;
+            inventory = 6;
+            description = window.inventory[6].description
             break;
-    
         default:
-        itemId= 0;
-        break;
+            itemId = 0;
+            description ='';
+            break;
     }
-    window.inventoryActive2= window.inventoryActive;
+    window.inventoryActive2 = window.inventoryActive;
     window.inventoryActive = itemId;
-    if(itemId !=""){
-        displayItem(itemId, parseInt(inventory,10));
+    if (itemId != "") {
+        displayItem(itemId, parseInt(inventory, 10));
     }
 }
-function displayItem(itemId, inventoryNumber){
+function displayItem(itemId, inventoryNumber, description ="") {
     //console.log("inspected"+itemId+ inventoryNumber +window.inventory[inventoryNumber].inspected)
     let textprompt = document.getElementById("objectInfo");
-    let text = "";
-    var pic = itemId + '.jpg';
+    let text = description;
+    var picID = stripName(itemId)
+    var pic = "assets/items/" + picID + '.png';
     var picElt = '<img src="' + pic + '" style="width:100%;height:80%">'
-    var inspectD ={id:itemId, num:inventoryNumber};
+    var inspectD = { id: itemId, num: inventoryNumber };
     let picprompt = document.getElementById("objectPicture");
-    picprompt.innerHTML = '<div style="margin:auto">'+picElt+'<button  id = "inspectButton">inspect</button> </div>';
-
-    //console.log("display" + inspectD.id + inspectD.num)
-    if(window.inventory[inventoryNumber].inspected == false){
-        textprompt.innerHTML =  "???"+ text ;
+    picprompt.innerHTML = '<div style="text-align:center;">' + picElt + '<button  id = "inspectButton">inspect</button> </div>';
+    if (window.inventory[inventoryNumber].inspected == false) {
+        textprompt.innerHTML = "???" + text;
     } else {
-        textprompt.innerHTML = itemId+ text ;
+        textprompt.innerHTML = itemId + text;
     }
     var inspectbutton = document.getElementById("inspectButton");
-    inspectbutton.addEventListener('click', function(){
+    inspectbutton.addEventListener('click', function () {
         inspect(inspectD);
     });
 }
-function updateDisplayItem(itemId, inventoryNumber, description = ""){
+function updateDisplayItem(itemId, inventoryNumber, description = "") {
     let textprompt = document.getElementById("objectInfo");
     let picprompt = document.getElementById("objectPicture");
-    let text =description;
-    var pic = itemId + '.jpg';
-    var picElt = '<img src="' + pic + '" style="width:100%;height:100%">'
-    let inspectD ={id:itemId, num:inventoryNumber};
-    //console.log("update display" + inspect)
-    picprompt.innerHTML = '<div style="margin:auto">'+picElt+'<button  id = "inspectButton">inspect</button> </div>';
-    textprompt.innerHTML =  '<button id = "inspectButton">inspect</button>'+itemId+ text ;
+    let text = description;
+    var picID = stripName(itemId)
+    var pic = "assets/items/" + picID + '.png';
+    var picElt = '<img src="' + pic + '" style="width:100%;height:80%">'
+
+    let inspectD = { id: itemId, num: inventoryNumber };
+    picprompt.innerHTML = '<div style="text-align:center;">' + picElt + '<button  id = "inspectButton">inspect</button> </div>';
+    textprompt.innerHTML = itemId + text;
     var inspectbutton = document.getElementById("inspectButton");
-    inspectbutton.addEventListener('click', function(){
+    inspectbutton.addEventListener('click', function () {
         inspect(inspectD);
     });
+}
+
+function stripName(itemId) {
+    return itemId.replace(/[0-9]/g, '');
 }
 
 //inspect the item 
 //on inspect button
-function inspect(inspected){
+function inspect(inspected) {
     //console.log("INSPECTED"+ inspected.id + inspected.num )
     let itemId = inspected.id;
-    let inventoryNumber= inspected.num;
+    let inventoryNumber = inspected.num;
     //console.log("line "+itemId+ "   " +inventoryNumber + typeof inventoryNumber)
     window.inventory[inventoryNumber].inspected = true;
     //xhr = new XMLHttpRequest();
@@ -107,30 +118,31 @@ function inspect(inspected){
 
 //inventory switch between char selections
 //takes in array
-function updateInventory(){
+function updateInventory() {
     console.log("Update Inventory")
-    for(let i = 1; i >=window.inventory.length; i++ ){
+    for (let i = 1; i >= window.inventory.length; i++) {
         inspect(window.inventory[i]);
     }
 }
 
 //add the item to the character inventory
-function addToInventory(itemId){
+function addToInventory(itemId) {
     //console.log("entered addToInventory");
     //put picture in the inventory
-    var pic = "assets/items/" + itemId + '.png';
+    var picID = stripName(itemId)
+    var pic = "assets/items/" + picID + '.png';
     var picElt = '<img src="' + pic + '" style="width:50%;height:25%">';
 
     var cellsRow = document.getElementById("inventoryCells");
     var cells = cellsRow.getElementsByTagName("td");
     var emptyCell = cells[0];
 
-    for(let i = 0; i < cells.length; i++){
+    for (let i = 0; i < cells.length; i++) {
         //console.log("entered for loop")
-        if(cells[i].innerHTML == ''){
+        if (cells[i].innerHTML == '') {
             //console.log("found empty cell");
             emptyCell = cells[i];
-            var num = i +1;
+            var num = i + 1;
             window.inventory[num].id = itemId;
             //console.log("add"+ window.inventory[num].id)
             break;
