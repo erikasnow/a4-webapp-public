@@ -105,6 +105,10 @@ var server = http.createServer(function (req, res) {
             console.log('Inspecting request')
             inspectObject(req, res)
             break
+        case '/inspect2':
+            console.log('Inspecting request')
+            inspectObject2(req, res)
+            break
         case '/interaction':
             getInteraction(req, res)
             break
@@ -158,6 +162,20 @@ function inspectObject(req, res) {
     req.on('end', function() {
         console.log('Getting id from database...');
         database.getInspectResult(input[0].player, input[0].obj_id, res);
+    });
+}
+
+function inspectObject2(req, res) {
+    console.log('Inspecting result2...');
+    var input = [];
+
+    req.on('data', function(data) {
+        input.push(JSON.parse(data));
+    });
+
+    req.on('end', function() {
+        console.log('Getting id from database...');
+        database.getInspectResult2(input[0].obj_id, res);
     });
 }
 

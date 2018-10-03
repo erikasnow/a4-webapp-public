@@ -4,11 +4,9 @@ var addReq = new XMLHttpRequest();
 var scoreReq = new XMLHttpRequest();
 
 // Get inspect use_id
-inspectReq.onreadystatechange = function() {
-    if (this.readyState === 4 && this.status === 200) {
-        window.inspectResult = this.responseText;
-        console.log("Inspect result: " + this.responseText);
-    }
+inspectReq.onload = function() {
+        window.inspectResult = JSON.parse(inspectReq.responseText);
+        console.log("Inspect result: " + inspectReq.responseText);    
 };
 
 // Get interaction
@@ -24,15 +22,14 @@ addReq.onreadystatechange = function() {
     }
 };
 
-scoreReq.onreadystatechange = function() {
-    if (this.readyState === 4 && this.status === 200) {
+scoreReq.onload = function() {
         console.log(this.responseText);
         var data = JSON.parse(this.responseText);
 
         if (data.length > 0) {
             fillTable(data);
         }
-    }
+    
 };
 
 function fillTable(data) {
@@ -77,5 +74,16 @@ function getInspectResultId(player, obj_id) {
     console.log(JSON.stringify(inspecting));
 
     inspectReq.open('POST', '/inspect');
+    inspectReq.send(JSON.stringify(inspecting));
+}
+function getInspectResultId2(obj_id) {
+    var inspecting = {};
+
+    inspecting.player = player;
+    inspecting.obj_id = obj_id;
+
+    console.log(JSON.stringify(inspecting));
+
+    inspectReq.open('POST', '/inspect2');
     inspectReq.send(JSON.stringify(inspecting));
 }

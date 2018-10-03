@@ -2,14 +2,12 @@
 
 //change what item is selected in the inventory
 function itemSelection(inventoryNumber) {
-    //console.log("inventory selection")
     let itemId;
     let inventory = 0;
     let description ="";
     switch (inventoryNumber) {
         case "1":
             itemId = window.inventory[1].id;
-            //console.log(window.inventory[1])
             inventory = 1;
             description = window.inventory[1].description
             window.activeSlot = 1;
@@ -51,11 +49,10 @@ function itemSelection(inventoryNumber) {
     window.inventoryActive2 = window.inventoryActive;
     window.inventoryActive = itemId;
     if (itemId != "") {
-        displayItem(itemId, parseInt(inventory, 10));
+        displayItem(itemId, parseInt(inventory, 10), description);
     }
 }
 function displayItem(itemId, inventoryNumber, description ="") {
-    //console.log("inspected"+itemId+ inventoryNumber +window.inventory[inventoryNumber].inspected)
     let textprompt = document.getElementById("objectInfo");
     let text = description;
     var picID = stripName(itemId)
@@ -84,7 +81,7 @@ function updateDisplayItem(itemId, inventoryNumber, description = "") {
 
     let inspectD = { id: itemId, num: inventoryNumber };
     picprompt.innerHTML = '<div style="text-align:center;">' + picElt + '<button  id = "inspectButton">inspect</button> </div>';
-    textprompt.innerHTML = itemId + text;
+    textprompt.innerHTML = text;
     var inspectbutton = document.getElementById("inspectButton");
     inspectbutton.addEventListener('click', function () {
         inspect(inspectD);
@@ -98,16 +95,25 @@ function stripName(itemId) {
 //inspect the item 
 //on inspect button
 function inspect(inspected) {
-    //console.log("INSPECTED"+ inspected.id + inspected.num )
     let itemId = inspected.id;
     let inventoryNumber = inspected.num;
-    //console.log("line "+itemId+ "   " +inventoryNumber + typeof inventoryNumber)
-    window.inventory[inventoryNumber].inspected = true;
     var id = itemId
-     getInspectResultId(window.character, id);
-     var result = window.inspectResult
-    console.log("result" + result)
-    updateDisplayItem(itemId, inventoryNumber);
+    if(window.inventory[inventoryNumber].inspected==false){
+        getInspectResultId(window.character, id);
+        var result = (window.inspectResult)
+        console.log("result" + result+ typeof result)
+        if(result != undefined) {
+            window.inventory[inventoryNumber].inspected = true;
+        }
+        updateDisplayItem(itemId, inventoryNumber, result.description);    
+    } else {
+        console.log("INSPECT2")
+        getInspectResultId(window.character, id);
+        var result = (window.inspectResult)
+        console.log("result" + result+ typeof result)
+        window.inventory[inventoryNumber].inspected = true;
+        updateDisplayItem(itemId, inventoryNumber, result.description);
+    }
 }
 
 //inventory switch between char selections
@@ -158,6 +164,6 @@ function deleteFromInventory() {
     //switch to scene 1
     window.inventoryActive = "";
     window.inventoryActive2 = "";
-    window.inventory[inventorySlot] = {id:"", inspected:false};
+    window.inventory[window.activeSlot] = {id:"", inspected:false};
 
 }

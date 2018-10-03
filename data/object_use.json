@@ -1,2 +1,4 @@
-[{"use_id": "rock5", "name": "hello", "description": "", "inspect_result": "rock5"},
-  {"use_id": "rock0", "name": "", "description": "again", "inspect_result": "rock5"}]
+[{"use_id": "rock5", "name": "ROCK", "description": "A Rock!", "inspect_result": "rock5"},
+  {"use_id": "rock1", "name": "Rock", "description": "A light rock", "inspect_result": "keyDoor1"},
+  {"use_id": "rock0", "name": "A rock", "description": "a plain old rock", "inspect_result": "rock0"},
+  {"use_id": "keyDoor1", "name": "A key", "description": "key", "inspect_result": "keyDoor1"}]

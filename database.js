@@ -58,22 +58,47 @@ exports.getInspectResult = function(player, obj_id, res) {
                 use_id = obj_id + result.rows[0].j_use;
                 break;
             case 'Krysta':
+                console.log("KRYSTA")
                 use_id = obj_id + result.rows[0].k_use;
                 break;
         }
 
         console.log('Getting inspect result, use_id: ' + use_id);
 
-        var inspect_idQuery = `SELECT inspect_result FROM object_use WHERE use_id = '${use_id}';`;
+        var inspect_idQuery = `SELECT * FROM object_use WHERE use_id = '${use_id}';`;
 
         client.query(inspect_idQuery, function(err, result) {
+            console.log("The result is " +result.rows.length)
             if (result.rows.length === 1) {
-                res.end(result.rows[0].inspect_result);
+                console.log("The result is " +result.rows[0])
+                res.end(JSON.stringify(result.rows[0]));
             } else {
                 res.end();
             }
         });
     });
+};
+
+exports.getInspectResult2 = function(obj_id, res) {
+        console.log('Getting inspect result2, use_id: ' + obj_id);
+
+        var inspect_idQuery = `SELECT inspect_result FROM object_use WHERE use_id = '${obj_id}';`;
+        client.query(inspect_idQuery, function(err, result) {
+            if (result.rows.length === 1) {
+                var id = result.rows[0].inspect_result
+                var inspect_idQuery = `SELECT * FROM object_use WHERE use_id = '${id}';`;
+                client.query(inspect_idQuery, function(err, result2) {
+                    if (result2.rows.length === 1) {
+                        res.end(JSON.stringify(result2.rows[0]));
+                    } else {
+                        res.end();
+                    }
+                });
+            } else {
+                res.end();
+            }
+        });
+
 };
 
 exports.getAction = function(scene_item, use_id) {
