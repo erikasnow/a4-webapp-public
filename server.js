@@ -181,13 +181,10 @@ function saveScore(req, res) {
 function sendScores(res) {
     var i, scores = [];
     var data = database.getAllScores();
-
     res.writeHead(200, {'Content-type': 'application/json'});
-
     for (i = 0; i < data.rows.length; i++) {
         scores.push(JSON.parse(data[i]));
     }
-
     res.end(JSON.stringify(scores));
 }
 
