@@ -75,8 +75,8 @@ exports.getInspectResult = function(player, object_id) {
     return use_id;
 }
 
-exports.getAction = function(scene, use_id) {
-    var query = `SELECT action FROM scene1_interaction WHERE use_id = '${use_id}' AND scene_id = '${scene}';`;
+exports.getAction = function(scene_item, use_id) {
+    var query = `SELECT action FROM scene1_interaction WHERE use_id = '${use_id}' AND scene_id = '${scene_item}';`;
 
     client.query(query, function(err, result) {
         if (result.rows.length === 1) {
@@ -86,6 +86,14 @@ exports.getAction = function(scene, use_id) {
         }
     });
 };
+
+exports.getAllScores = function() {
+    var query = 'SELECT name, score FROM score;';
+
+    client.query(query, function(err, result) {
+        return result;
+    });
+}
 
 function clearPreviousData(table_name) {
     var query = `DELETE FROM ${table_name}`;
@@ -105,7 +113,7 @@ exports.uploadToInventory = function(data) {
         client.query(query, function (err, result) {
         });
     }
-}
+};
 
 exports.uploadToObjectUse = function(data) {
     var i;

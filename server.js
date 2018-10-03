@@ -61,6 +61,9 @@ var server = http.createServer(function (req, res) {
         case '/js/mainScreen.js':
             sendFile(res, 'js/mainScreen.js', 'text/javascript')
             break
+        case '/js/requestToServer.js':
+            sendFile(res, 'js/requestToServer.js', 'text/javascript')
+            break
         case '/placeholder.jpg':
             sendFile(res, 'placeholder.jpg')
             break
@@ -69,6 +72,9 @@ var server = http.createServer(function (req, res) {
             break
         case '/interaction':
             getInteraction(req, res)
+            break
+        case '/score':
+            sendScores(res)
             break
         case '/assets/Waypoint_D.ogg':
             sendFile(res,'assets/Waypoint_D.ogg', 'audio/ogg' )
@@ -113,6 +119,19 @@ function getInteraction(req, res) {
     req.on('end', function() {
         res.end(database.getAction(input[0].scene_id, input[0].item_id));
     })
+}
+
+function sendScores(res) {
+    var i, scores = [];
+    var data = database.getAllScores();
+
+    res.writeHead(200, {'Content-type': 'application/json'});
+
+    for (i = 0; i < data.rows.length; i++) {
+        scores.push(JSON.parse(data[i]));
+    }
+
+    res.end(JSON.stringify(scores));
 }
 
 function uploadToDatabase(table, filename) {
