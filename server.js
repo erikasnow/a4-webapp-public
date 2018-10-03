@@ -61,17 +61,17 @@ var server = http.createServer(function (req, res) {
         case '/js/mainScreen.js':
             sendFile(res, 'js/mainScreen.js', 'text/javascript')
             break
-        case '/assets/digital-7.regular.ttf':
-            sendFile(res, 'js/mainScreen.js')
-            break
         case '/placeholder.jpg':
             sendFile(res, 'placeholder.jpg')
             break
         case '/inspect':
-            inspectObject(req, res);
+            inspectObject(req, res)
             break
         case '/interaction':
-            getInteraction(req, res);
+            getInteraction(req, res)
+            break
+        case '/assets/Waypoint_D.ogg':
+            sendFile(res,'assets/Waypoint_D.ogg', 'audio/ogg' )
             break
         default:
             res.end('404 not found')
