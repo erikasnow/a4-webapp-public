@@ -15,7 +15,11 @@ function start() {
     window.inventory[5]= {id:"", inspected:false};
     window.inventory[6]= {id:"", inspected:false};
     window.timerTime=null;
-
+    
+}
+window.onload=function() {
+    var audio = document.getElementById("audio");
+    audio.volume = 0.1;
 }
 
 //Start playing music if we want any
