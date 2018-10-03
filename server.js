@@ -154,7 +154,7 @@ function inspectObject(req, res) {
     });
 
     req.on('end', function() {
-        res.end(database.getInspectResult(input[0].player, input[0].use_id));
+        database.getInspectResult(input[0].player, input[0].use_id, res);
     });
 }
 
