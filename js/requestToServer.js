@@ -75,6 +75,6 @@ function getInspectResultId(player, use_id) {
     inspecting.use_id = use_id;
 
     inspectReq.open('POST', '/inspect');
-    scoreReq.setRequestHeader('Content-type', 'application/json');
+    inspectReq.setRequestHeader('Content-type', 'application/json');
     inspectReq.send(JSON.stringify(inspecting));
 }

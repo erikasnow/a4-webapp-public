@@ -59,16 +59,16 @@ exports.getDescription = function(player, object_id) {
     }
 };
 
-exports.getInspectResult = function(player, use_id) {
+exports.getInspectResult = function(player, use_id, res) {
     var query = `SELECT inspect_result FROM object_use WHERE use_id = '${use_id}';`;
 
     client.query(query, function(err, result) {
         if (result.rows.length === 1) {
-            use_id = result.rows[0].inspect_result;
+            res.end(result.rows[0].inspect_result);
+        } else {
+            res.end();
         }
     });
-
-    return use_id;
 }
 
 exports.getAction = function(scene_item, use_id) {
