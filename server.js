@@ -105,16 +105,6 @@ var server = http.createServer(function (req, res) {
             console.log('Inspecting request')
             inspectObject(req, res)
             break
-<<<<<<< HEAD
-        case '/inspect2':
-            console.log('Inspecting request')
-            inspectObject2(req, res)
-            break
-        case '/interaction':
-            getInteraction(req, res)
-            break
-=======
->>>>>>> 9b0d7887bed7bbf09b22a7b074ad35e64628322f
         case '/add':
             saveScore(req, res)
             break
@@ -174,12 +164,8 @@ function inspectObject(req, res) {
     });
 }
 
-<<<<<<< HEAD
 function inspectObject2(req, res) {
     console.log('Inspecting result2...');
-=======
-function getInformation(req, res) {
->>>>>>> 9b0d7887bed7bbf09b22a7b074ad35e64628322f
     var input = [];
 
     req.on('data', function(data) {
@@ -187,12 +173,20 @@ function getInformation(req, res) {
     });
 
     req.on('end', function() {
-<<<<<<< HEAD
         console.log('Getting id from database...');
-        database.getInspectResult2(input[0].obj_id, res);
-=======
+        database.getInspectResult2( input[0].obj_id, res);
+    });
+}
+function getInformation(req, res) {
+    var input = [];
+
+    req.on('data', function(data) {
+        input.push(JSON.parse(data));
+    });
+
+    req.on('end', function() {
+        console.log('Getting id from database...');
         database.getDescription(input[0].use_id, res);
->>>>>>> 9b0d7887bed7bbf09b22a7b074ad35e64628322f
     });
 }
 
