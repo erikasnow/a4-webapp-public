@@ -59,7 +59,8 @@ exports.getDescription = function(player, object_id) {
     }
 };
 
-exports.getInspectResult = function(player, use_id, res) {
+exports.getInspectResult = function(player, obj_id, res) {
+    var use_id = getUseId(player, obj_id);
     var query = `SELECT inspect_result FROM object_use WHERE use_id = '${use_id}';`;
 
     client.query(query, function(err, result) {
@@ -69,7 +70,7 @@ exports.getInspectResult = function(player, use_id, res) {
             res.end();
         }
     });
-}
+};
 
 exports.getAction = function(scene_item, use_id) {
     var query = `SELECT action FROM scene1_interaction WHERE use_id = '${use_id}' AND scene_id = '${scene_item}';`;
