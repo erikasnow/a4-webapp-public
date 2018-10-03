@@ -181,26 +181,18 @@ function saveScore(req, res) {
     });
 
     req.on('end', function() {
+        console.log('input is: ' + JSON.stringify(input));
         database.addScore(input[0].name, input[0].score);
+        res.end();
     });
-
-    res.end();
 }
 
 function sendScores(res) {
-    var i, scores = [];
-    var data = database.getAllScores();
-    res.writeHead(200, {'Content-type': 'application/json'});
-    for (i = 0; i < data.rows.length; i++) {
-        scores.push(JSON.parse(data[i]));
-    }
-    res.end(JSON.stringify(scores));
+    database.getAllScores(res);
 }
 
 function uploadToDatabase(table, filename) {
     var stream = fs.createReadStream(filename);
-
-    console.log('reading data from stream...');
 
     stream.on('data', function (data) {
         if (table === "inventory") {
@@ -210,8 +202,6 @@ function uploadToDatabase(table, filename) {
         } else {
             database.uploadToScene1(JSON.parse(data));
         }
-
-        console.log(JSON.parse(data));
     });
 
     stream.on('end', function (data) {

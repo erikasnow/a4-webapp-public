@@ -87,18 +87,22 @@ exports.getAction = function(scene_item, use_id) {
     });
 };
 
-exports.getAllScores = function() {
+exports.getAllScores = function(res) {
     var query = 'SELECT * FROM score;';
 
     client.query(query, function(err, result) {
         if (result.rows.length > 0) {
-            return result;
+            res.end(JSON.stringify(result.rows));
+        } else {
+            res.end();
         }
     });
 };
 
 exports.addScore = function(name, score) {
-    var query = `INSERT INTO score VALUES('${name}', ${score});`;
+    var query = `INSERT INTO score VALUES('${name}', '${score}');`;
+
+    console.log("add query: " + query);
 
     client.query(query, function(err, result) {
     });

@@ -26,6 +26,7 @@ addReq.onreadystatechange = function() {
 
 scoreReq.onreadystatechange = function() {
     if (this.readyState === 4 && this.status === 200) {
+        console.log(this.responseText);
         var data = JSON.parse(this.responseText);
 
         if (data.length > 0) {
@@ -35,12 +36,12 @@ scoreReq.onreadystatechange = function() {
 };
 
 function fillTable(data) {
-    var htmlTable = `${
-        data.map(data = function() {
-            `<tr><td>${data.name}</td><td>${data.score}</td></tr>`
-        }).join('')
-        }`;
-    document.getElementById("scoreTable").innerHTML += htmlTable;
+    var i;
+
+    for (i = 0; i < data.length; i++) {
+        var htmlTable = `<tr><td>${data[i].name}</td><td>${data[i].score}</td></tr>`;
+        document.getElementById("scoreTable").innerHTML += htmlTable;
+    }
 }
 
 function getScores() {
@@ -50,8 +51,13 @@ function getScores() {
 }
 
 function addScore(name, score) {
+    var score_info = {};
+
+    score_info.name = name;
+    score_info.score = score;
+
     addReq.open('PUT', '/add');
-    addReq.send(JSON.stringify([{"name": name, "score": score}]));
+    addReq.send(JSON.stringify(score_info));
 }
 
 // Need to figure out what to give this, and what we want - e.g use_id? inspect_result_id? (which is a use_id)
