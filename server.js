@@ -114,6 +114,9 @@ var server = http.createServer(function (req, res) {
         case '/description':
             getInformation(req, res)
             break
+        case '/interaction':
+            getInteraction(req, res)
+            break
         case '/assets/Waypoint_D.ogg':
             sendFile(res,'assets/Waypoint_D.ogg', 'audio/ogg' )
             break
@@ -170,6 +173,18 @@ function getInformation(req, res) {
 
     req.on('end', function() {
         database.getDescription(input[0].use_id, res);
+    });
+}
+
+function getInteraction(req, res) {
+    var input = [];
+
+    req.on('data', function(data) {
+        input.push(JSON.parse(data));
+    });
+
+    req.on('end', function() {
+        database.getFunction(input[0].use_id, input[0].scene_id, res);
     });
 }
 

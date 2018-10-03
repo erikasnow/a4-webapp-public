@@ -68,6 +68,18 @@ exports.getAllScores = function(res) {
     });
 };
 
+exports.getFunction = function(use_id, scene_id, res) {
+    var query = `SELECT action FROM scene1_interaction WHERE use_id = '${use_id}' AND scene_id = '${scene_id}'`;
+
+    client.query(query, function(err, result) {
+        if (result.rows.length > 0) {
+            res.end(result.rows[0].action);
+        } else {
+            res.end();
+        }
+    });
+};
+
 exports.addScore = function(name, score) {
     var query = `INSERT INTO score VALUES('${name}', '${score}');`;
 

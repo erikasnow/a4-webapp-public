@@ -23,7 +23,7 @@ inspectReq.onreadystatechange = function() {
 // Get interaction
 actionReq.onreadystatechange = function() {
     if (this.readyState === 4 && this.status === 200) {
-        //call function this.responseText;
+        window[this.responseText];
     }
 };
 
@@ -70,10 +70,15 @@ function addScore(name, score) {
 }
 
 // Need to figure out what to give this, and what we want - e.g use_id? inspect_result_id? (which is a use_id)
-function getAction() {
-    actionReq.open('GET', '/action');
+function performAction(use_id, scene_id) {
+    var interacting = {};
+
+    interacting.use_id = use_id;
+    interacting.scene_id = scene_id;
+
+    actionReq.open('GET', '/interaction');
     actionReq.setRequestHeader('Content-type', 'application/json');
-    actionReq.send();
+    actionReq.send(JSON.stringify(interacting));
 }
 
 // Need to figure out what to give this, and what we want - e.g use_id? inspect_result_id? (which is a use_id)
