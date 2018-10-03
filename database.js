@@ -93,6 +93,13 @@ exports.getAllScores = function() {
     client.query(query, function(err, result) {
         return result;
     });
+};
+
+exports.addScore = function(name, score) {
+    var query = `INSERT INTO score VALUES('${name}', ${score});`;
+
+    client.query(query, function(err, result) {
+    });
 }
 
 function clearPreviousData(table_name) {

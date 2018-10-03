@@ -1,7 +1,14 @@
+var addReq = new XMLHttpRequest();
 var scoreReq = new XMLHttpRequest();
 
+addReq.onreadystatechange = function() {
+    if (this.readyState === 4 && this.status === 200) {
+        getScores();
+    }
+};
+
 scoreReq.onreadystatechange = function() {
-    if (this.readState === 4 && this.status === 200) {
+    if (this.readyState === 4 && this.status === 200) {
         var data = JSON.parse(this.responseText);
 
         fillTable(data);
@@ -21,4 +28,9 @@ function getScores() {
     scoreReq.open('GET', '/score');
     scoreReq.setRequestHeader('Content-type', 'application/json');
     scoreReq.send();
+}
+
+function addScore(name, score) {
+    addReq.open('PUT', '/add');
+    addReq.send(JSON.stringify([{"name": name, "score": score}]));
 }
