@@ -6,8 +6,8 @@ var scoreReq = new XMLHttpRequest();
 
 // Get inspect use_id
 inspectReq.onload = function() {
-        window.inspectResult = JSON.parse(inspectReq.responseText);
-        console.log("Inspect result: " + inspectReq.responseText);    
+    window.inspectResult = JSON.parse(inspectReq.responseText);
+    console.log("Inspect result: " + inspectReq.responseText);
 }
 describeReq.onreadystatechange = function() {
     if (this.readyState === 4 && this.status === 200) {
@@ -16,13 +16,21 @@ describeReq.onreadystatechange = function() {
     }
 };
 
-
 // Get interaction
 actionReq.onreadystatechange = function() {
     if (this.readyState === 4 && this.status === 200) {
-        window[this.responseText];
+        var fcn = Function(this.responseText);
+        fcn();
     }
 };
+
+function test() {
+    console.log("5 + 5 = 10");
+}
+
+function test(sum) {
+    console.log("Hi");
+}
 
 addReq.onreadystatechange = function() {
     if (this.readyState === 4 && this.status === 200) {
@@ -31,13 +39,12 @@ addReq.onreadystatechange = function() {
 };
 
 scoreReq.onload = function() {
-        console.log(this.responseText);
-        var data = JSON.parse(this.responseText);
+    console.log(this.responseText);
+    var data = JSON.parse(this.responseText);
 
-        if (data.length > 0) {
-            fillTable(data);
-        }
-    
+    if (data.length > 0) {
+        fillTable(data);
+    }
 };
 
 function fillTable(data) {
