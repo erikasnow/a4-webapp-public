@@ -68,13 +68,13 @@ function getAction() {
 }
 
 // Need to figure out what to give this, and what we want - e.g use_id? inspect_result_id? (which is a use_id)
-function getInspectResultId(player, obj_id) {
+function getInspectResultId(player, use_id) {
     var inspecting = {};
 
     inspecting.player = player;
-    inspecting.obj_id = obj_id;
+    inspecting.use_id = use_id;
 
-    inspectReq.open('GET', '/inspect');
+    inspectReq.open('POST', '/inspect');
     scoreReq.setRequestHeader('Content-type', 'application/json');
     inspectReq.send(JSON.stringify(inspecting));
 }
