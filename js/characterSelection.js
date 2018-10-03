@@ -1,5 +1,7 @@
 //clickable for each charcter
 function chooseCharacter(character){
+    var picprompt = document.getElementById("objectPicture");
+    picprompt.innerHTML= "";
     console.log("character"+character)
     window.character = character;
     console.log(window.character)
