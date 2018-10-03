@@ -105,14 +105,14 @@ var server = http.createServer(function (req, res) {
             console.log('Inspecting request')
             inspectObject(req, res)
             break
-        case '/interaction':
-            getInteraction(req, res)
-            break
         case '/add':
             saveScore(req, res)
             break
         case '/score':
             sendScores(res)
+            break
+        case '/description':
+            getInformation(req, res)
             break
         case '/assets/Waypoint_D.ogg':
             sendFile(res,'assets/Waypoint_D.ogg', 'audio/ogg' )
@@ -161,7 +161,7 @@ function inspectObject(req, res) {
     });
 }
 
-function getInteraction(req, res) {
+function getInformation(req, res) {
     var input = [];
 
     req.on('data', function(data) {
@@ -169,7 +169,7 @@ function getInteraction(req, res) {
     });
 
     req.on('end', function() {
-        res.end(database.getAction(input[0].scene_id, input[0].item_id));
+        database.getDescription(input[0].use_id, res);
     });
 }
 

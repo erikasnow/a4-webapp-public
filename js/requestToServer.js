@@ -1,7 +1,16 @@
+var describeReq = new XMLHttpRequest();
 var inspectReq = new XMLHttpRequest();
 var actionReq = new XMLHttpRequest();
 var addReq = new XMLHttpRequest();
 var scoreReq = new XMLHttpRequest();
+
+// Get inspect use_id
+describeReq.onreadystatechange = function() {
+    if (this.readyState === 4 && this.status === 200) {
+        //window.inventory.active
+        //updateDisplayItem(itemId, inventoryNumber, this.responseText);
+    }
+};
 
 // Get inspect use_id
 inspectReq.onreadystatechange = function() {
@@ -78,4 +87,13 @@ function getInspectResultId(player, obj_id) {
 
     inspectReq.open('POST', '/inspect');
     inspectReq.send(JSON.stringify(inspecting));
+}
+
+function getDescription(use_id) {
+    var usage = {};
+
+    usage.use_id = use_id;
+
+    describeReq.open('POST', '/description');
+    describeReq.send(JSON.stringify(usage));
 }
