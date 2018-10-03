@@ -12,6 +12,10 @@ function chooseCharacter(character){
     displayCharacterDescription(character)
 }
 
+function updateStartButton(){
+    var btn = document.getElementById("StartBtn");
+    btn.removeAttribute("disabled")
+}
 
 //don't know if this will be different from choose character
 function switchCharacter(){
