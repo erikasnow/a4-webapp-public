@@ -79,6 +79,18 @@ var server = http.createServer(function (req, res) {
         case '/assets/Waypoint_D.ogg':
             sendFile(res,'assets/Waypoint_D.ogg', 'audio/ogg' )
             break
+        case '/assets/characters/Erika.png':
+            sendFile(res,'assets/characters/Erika.png' )
+            break
+        case '/assets/characters/Ally.png':
+            sendFile(res,'assets/characters/Ally.png' )
+            break
+        case '/assets/characters/Joan.png':
+            sendFile(res,'assets/characters/Joan.png' )
+            break
+        case '/assets/characters/Krysta.png':
+            sendFile(res,'assets/characters/Krysta.png' )
+            break
         default:
             res.end('404 not found')
     }

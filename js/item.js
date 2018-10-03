@@ -46,11 +46,11 @@ function displayItem(itemId, inventoryNumber){
     //console.log("inspected"+itemId+ inventoryNumber +window.inventory[inventoryNumber].inspected)
     let textprompt = document.getElementById("objectInfo");
     let text = "";
-    var pic = itemId + '.jpg';
+    var pic = itemId + '.png';
     var picElt = '<img src="' + pic + '" style="width:100%;height:80%">'
     var inspectD ={id:itemId, num:inventoryNumber};
     let picprompt = document.getElementById("objectPicture");
-    picprompt.innerHTML = '<div style="margin:auto">'+picElt+'<button  id = "inspectButton">inspect</button> </div>';
+    picprompt.innerHTML = '<div style="text-align:center;>'+picElt+'<button  id = "inspectButton">inspect</button> </div>';
 
     //console.log("display" + inspectD.id + inspectD.num)
     if(window.inventory[inventoryNumber].inspected == false){
@@ -71,7 +71,7 @@ function updateDisplayItem(itemId, inventoryNumber, description = ""){
     var picElt = '<img src="' + pic + '" style="width:100%;height:100%">'
     let inspectD ={id:itemId, num:inventoryNumber};
     //console.log("update display" + inspect)
-    picprompt.innerHTML = '<div style="margin:auto">'+picElt+'<button  id = "inspectButton">inspect</button> </div>';
+    picprompt.innerHTML = '<div style="text-align:center;">'+picElt+'<button  id = "inspectButton">inspect</button> </div>';
     textprompt.innerHTML =  '<button id = "inspectButton">inspect</button>'+itemId+ text ;
     var inspectbutton = document.getElementById("inspectButton");
     inspectbutton.addEventListener('click', function(){
