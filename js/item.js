@@ -153,3 +153,17 @@ function addToInventory(itemId) {
     //console.log("should have added picture to inventory");
 }
 
+function deleteFromInventory(inventorySlot) {
+    var cellsRow = document.getElementById("inventoryCells");
+    var cells = cellsRow.getElementsByTagName("td");
+    cells[inventorySlot].innerHTML= "";
+    var prompt = document.getElementById("objectInfo");
+    prompt.innerHTML="";
+    var picprompt = document.getElementById("objectPicture");
+    picprompt.innerHTML= "";
+    //switch to scene 1
+    window.inventoryActive = "";
+    window.inventoryActive2 = "";
+    window.inventory[inventorySlot]= {id:"", inspected:false};
+
+}
