@@ -38,7 +38,7 @@ function itemSelection(inventoryNumber){
     }
     window.inventoryActive2= window.inventoryActive;
     window.inventoryActive = itemId;
-    if(iteId !=""){
+    if(itemId !=""){
         displayItem(itemId, parseInt(inventory,10));
     }
 }
@@ -118,7 +118,7 @@ function updateInventory(){
 function addToInventory(itemId){
     //console.log("entered addToInventory");
     //put picture in the inventory
-    var pic = itemId + '.jpg';
+    var pic = "assets/items/" + itemId + '.png';
     var picElt = '<img src="' + pic + '" style="width:50%;height:25%">';
 
     var cellsRow = document.getElementById("inventoryCells");
