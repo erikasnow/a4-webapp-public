@@ -59,18 +59,14 @@ exports.getDescription = function(player, object_id) {
     }
 };
 
-exports.getInspectResult = function(player, object_id) {
-    var use_id = getUseId(player, object_id);
+exports.getInspectResult = function(player, use_id) {
+    var query = `SELECT inspect_result FROM object_use WHERE use_id = '${use_id}';`;
 
-    if (use_id !== null) {
-        var query = `SELECT inspect_result FROM object_use WHERE use_id = '${use_id}';`;
-
-        client.query(query, function(err, result) {
-            if (result.rows.length === 1) {
-                use_id = result.rows[0].inspect_result;
-            }
-        });
-    }
+    client.query(query, function(err, result) {
+        if (result.rows.length === 1) {
+            use_id = result.rows[0].inspect_result;
+        }
+    });
 
     return use_id;
 }
