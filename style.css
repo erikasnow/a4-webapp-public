@@ -66,12 +66,13 @@ p {
 .characterTableMain {
     background: whitesmoke;
     width:70%;
-    height:40%;
+    height:55%;
     margin: auto;
     cursor: pointer;
 }
+
 .characterCellMain{
-    height:80%;
+    min-height: 100%;
 }
 
 .characterTable {
@@ -88,7 +89,6 @@ p {
     width: 25%;
     text-align: center;
 }
-
 
 .characterCell {
     cursor: pointer;
