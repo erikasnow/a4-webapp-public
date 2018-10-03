@@ -102,6 +102,7 @@ var server = http.createServer(function (req, res) {
             sendFile(res, 'assets/items/keyDoor.png')
             break
         case '/inspect':
+            console.log('Inspecting request')
             inspectObject(req, res)
             break
         case '/interaction':
@@ -147,6 +148,7 @@ function sendFile(res, filename, contentType) {
 }
 
 function inspectObject(req, res) {
+    console.log('Inspecting result...');
     var input = [];
 
     req.on('data', function(data) {
@@ -154,6 +156,7 @@ function inspectObject(req, res) {
     });
 
     req.on('end', function() {
+        console.log('Getting id from database...');
         database.getInspectResult(input[0].player, input[0].obj_id, res);
     });
 }

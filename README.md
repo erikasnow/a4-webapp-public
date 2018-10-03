@@ -26,7 +26,9 @@ Images are encouraged, along with concise, high-level text.
 ## Technical Achievements
 - **Tech Achievement 1**: As shown in `sceneHandler.js`, we have managed to move images when they are clicked so that we can hide oobjects behind other objects in the screen
 - **Tech Achievement 2**: Allowed different character options, each with a unique playthrough of the game. For this, we had to make many tables in our database in order to handle different characters interacting with the same objects. `INSERT IMAGE OF DATABASE`
-- **Tech Achievement 2**: As shown in `timer.js`, we created global variables using window variables in order to pass information between screens
+- **Tech Achievement 3**: As shown in `timer.js`, we created global variables using window variables in order to pass information between screens
+- **Tech Achievement 4**: Implemented a timer to make the score
+
 
 ## Design/Evaluation Achievements
 - **Design Achievement 1**: Built in scalability so that we can expand for the final project and beyond

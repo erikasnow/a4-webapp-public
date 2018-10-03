@@ -53,7 +53,7 @@ p {
     width:30%;
     height:94%;
     padding:1%;
-    
+    border: 1px solid rgb(34, 32, 32);
 }
 
 .objectInfo {
@@ -62,6 +62,7 @@ p {
     width:65%;
     height:94%;
     padding:1%;
+    border:1px solid rgb(34, 32, 32);
 }
 
 .characterTableMain {
@@ -70,10 +71,6 @@ p {
     height:55%;
     margin: auto;
     cursor: pointer;
-}
-
-.characterCellMain{
-    min-height: 100%;
 }
 
 .characterTable {
@@ -104,6 +101,13 @@ td {
     margin: auto;
     min-width: 50px;
     cursor: pointer;
+}
+
+.scoreTable {
+    margin:auto;
+    width:50%;
+    background:whitesmoke;
+    border: 1px solid rgb(34, 32, 32);
 }
 
 #disabler {

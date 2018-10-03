@@ -7,6 +7,7 @@ var scoreReq = new XMLHttpRequest();
 inspectReq.onreadystatechange = function() {
     if (this.readyState === 4 && this.status === 200) {
         window.inspectResult = this.responseText;
+        console.log("Inspect result: " + this.responseText);
     }
 };
 
@@ -62,7 +63,7 @@ function addScore(name, score) {
 // Need to figure out what to give this, and what we want - e.g use_id? inspect_result_id? (which is a use_id)
 function getAction() {
     actionReq.open('GET', '/action');
-    scoreReq.setRequestHeader('Content-type', 'application/json');
+    actionReq.setRequestHeader('Content-type', 'application/json');
     actionReq.send();
 }
 
@@ -73,7 +74,8 @@ function getInspectResultId(player, obj_id) {
     inspecting.player = player;
     inspecting.obj_id = obj_id;
 
+    console.log(JSON.stringify(inspecting));
+
     inspectReq.open('POST', '/inspect');
-    inspectReq.setRequestHeader('Content-type', 'application/json');
     inspectReq.send(JSON.stringify(inspecting));
 }
