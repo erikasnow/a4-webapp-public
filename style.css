@@ -81,7 +81,7 @@ p {
 }
 
 .characterCellMain {
-    background: red;
+    background: rgb(235, 138, 138);
     width: 25%;
     text-align: center;
 }

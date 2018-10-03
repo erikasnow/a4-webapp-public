@@ -8,6 +8,7 @@ function howto() {
 function start() {
     //switch to scene 1
     window.inventoryActive = "";
+    window.inventoryActive2 = "";
     window.inventory[1]= {id:"", inspected:false};
     window.inventory[2]= {id:"", inspected:false};
     window.inventory[3]= {id:"", inspected:false};
@@ -20,6 +21,7 @@ function start() {
 window.onload=function() {
     var audio = document.getElementById("audio");
     audio.volume = 0.1;
+    
 }
 
 //Start playing music if we want any
