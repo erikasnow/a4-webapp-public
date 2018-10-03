@@ -86,11 +86,26 @@ var server = http.createServer(function (req, res) {
         case '/interaction':
             getInteraction(req, res)
             break
+        case '/add':
+            saveScore(req, res)
+            break
         case '/score':
             sendScores(res)
             break
         case '/assets/Waypoint_D.ogg':
             sendFile(res,'assets/Waypoint_D.ogg', 'audio/ogg' )
+            break
+        case '/assets/characters/Erika.png':
+            sendFile(res,'assets/characters/Erika.png' )
+            break
+        case '/assets/characters/Ally.png':
+            sendFile(res,'assets/characters/Ally.png' )
+            break
+        case '/assets/characters/Joan.png':
+            sendFile(res,'assets/characters/Joan.png' )
+            break
+        case '/assets/characters/Krysta.png':
+            sendFile(res,'assets/characters/Krysta.png' )
             break
         default:
             res.end('404 not found')
@@ -119,7 +134,7 @@ function inspectObject(req, res) {
 
     req.on('end', function() {
         res.end(database.getInspectResult(input[0].player, input[0].obj_id));
-    })
+    });
 }
 
 function getInteraction(req, res) {
@@ -131,7 +146,21 @@ function getInteraction(req, res) {
 
     req.on('end', function() {
         res.end(database.getAction(input[0].scene_id, input[0].item_id));
-    })
+    });
+}
+
+function saveScore(req, res) {
+    var input = [];
+
+    req.on('data', function(data) {
+        input.push(JSON.parse(data));
+    });
+
+    req.on('end', function() {
+        database.addScore(input[0].name, input[0].score);
+    });
+
+    res.end();
 }
 
 function sendScores(res) {

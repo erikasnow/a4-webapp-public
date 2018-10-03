@@ -18,12 +18,6 @@ function start() {
     window.timerTime=null;
     
 }
-window.onload=function() {
-    var audio = document.getElementById("audio");
-    audio.volume = 0.1;
-    
-}
-
 //Start playing music if we want any
 function musicMainScreen() {
     //Get the file and play it

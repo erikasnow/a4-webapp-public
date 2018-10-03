@@ -55,7 +55,6 @@ p {
     
 }
 
-
 .objectInfo {
     background:yellow;
     float:right;
@@ -67,9 +66,12 @@ p {
 .characterTableMain {
     background: whitesmoke;
     width:70%;
-    height:60%;
+    height:40%;
     margin: auto;
     cursor: pointer;
+}
+.characterCellMain{
+    height:80%;
 }
 
 .characterTable {
@@ -86,6 +88,7 @@ p {
     width: 25%;
     text-align: center;
 }
+
 
 .characterCell {
     cursor: pointer;
