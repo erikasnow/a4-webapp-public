@@ -1,3 +1,4 @@
+var describeReq = new XMLHttpRequest();
 var inspectReq = new XMLHttpRequest();
 var actionReq = new XMLHttpRequest();
 var addReq = new XMLHttpRequest();
@@ -7,12 +8,19 @@ var scoreReq = new XMLHttpRequest();
 inspectReq.onload = function() {
         window.inspectResult = JSON.parse(inspectReq.responseText);
         console.log("Inspect result: " + inspectReq.responseText);    
+}
+describeReq.onreadystatechange = function() {
+    if (this.readyState === 4 && this.status === 200) {
+        //window.inventory.active
+        //updateDisplayItem(itemId, inventoryNumber, this.responseText);
+    }
 };
+
 
 // Get interaction
 actionReq.onreadystatechange = function() {
     if (this.readyState === 4 && this.status === 200) {
-        window.resultInspect = this.responseText;
+        window[this.responseText];
     }
 };
 
@@ -58,10 +66,15 @@ function addScore(name, score) {
 }
 
 // Need to figure out what to give this, and what we want - e.g use_id? inspect_result_id? (which is a use_id)
-function getAction() {
-    actionReq.open('GET', '/action');
+function performAction(use_id, scene_id) {
+    var interacting = {};
+
+    interacting.use_id = use_id;
+    interacting.scene_id = scene_id;
+
+    actionReq.open('GET', '/interaction');
     actionReq.setRequestHeader('Content-type', 'application/json');
-    actionReq.send();
+    actionReq.send(JSON.stringify(interacting));
 }
 
 // Need to figure out what to give this, and what we want - e.g use_id? inspect_result_id? (which is a use_id)
@@ -86,4 +99,12 @@ function getInspectResultId2(obj_id) {
 
     inspectReq.open('POST', '/inspect2');
     inspectReq.send(JSON.stringify(inspecting));
+}
+function getDescription(use_id) {
+    var usage = {};
+
+    usage.use_id = use_id;
+
+    describeReq.open('POST', '/description');
+    describeReq.send(JSON.stringify(usage));
 }

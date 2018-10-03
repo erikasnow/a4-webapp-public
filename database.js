@@ -9,36 +9,16 @@ exports.connect = function() {
     client.connect();
 };
 
-/*
-function getPlayerIndex(player) {
-    switch(player) {
-        case 'Erika': return 0;
-        case 'Ally': return 1;
-        case 'Joan': return 2;
-        case 'Krysta': return 3;
-    }
-}
-*/
+exports.getDescription = function(use_id, res) {
+    var query = `SELECT description FROM object_use WHERE use_id = '${use_id}';`;
 
-function getUseId(player, object_id) {
-
-}
-
-exports.getDescription = function(player, object_id) {
-    var use_id = getUseId(player, object_id);
-
-    if (use_id !== null) {
-        var query = `SELECT description FROM object_use WHERE use_id = '${use_id}';`;
-
-        client.query(query, function (err, result) {
-            if (result.rows.length === 1) {
-                return result.rows[0].description;
-            }
-        });
-
-    } else {
-        return "?";
-    }
+    client.query(query, function (err, result) {
+        if (result.rows.length === 1) {
+            res.end(result.rows[0].description);
+        } else {
+            res.end("");
+        }
+    });
 };
 
 exports.getInspectResult = function(player, obj_id, res) {
@@ -103,22 +83,25 @@ exports.getInspectResult2 = function(obj_id, res) {
 
 exports.getAction = function(scene_item, use_id) {
     var query = `SELECT action FROM scene1_interaction WHERE use_id = '${use_id}' AND scene_id = '${scene_item}';`;
-
-    client.query(query, function(err, result) {
-        if (result.rows.length === 1) {
-            return result.rows[0].action;
-        } else {
-            return null;
-        }
-    });
-};
-
+}
 exports.getAllScores = function(res) {
     var query = 'SELECT * FROM score;';
 
     client.query(query, function(err, result) {
         if (result.rows.length > 0) {
             res.end(JSON.stringify(result.rows));
+        } else {
+            res.end();
+        }
+    });
+};
+
+exports.getFunction = function(use_id, scene_id, res) {
+    var query = `SELECT action FROM scene1_interaction WHERE use_id = '${use_id}' AND scene_id = '${scene_id}'`;
+
+    client.query(query, function(err, result) {
+        if (result.rows.length > 0) {
+            res.end(result.rows[0].action);
         } else {
             res.end();
         }

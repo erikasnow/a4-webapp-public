@@ -7,9 +7,8 @@ function changeScreen(newScreen, removeInventory) {
     }
 }
 
-function interaction(itemId, sceneId){
-    //got to db to get interaction
-    //run the functions in the db
+function interaction(useId, sceneId){
+    performAction(useId, sceneId);
 }
 
 function clearInventory() {
