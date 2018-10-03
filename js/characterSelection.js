@@ -3,7 +3,7 @@ function chooseCharacter(character){
     var picprompt = document.getElementById("objectPicture");
     picprompt.innerHTML= "";
     var pic = 'assets/characters/'+character + '.png';
-    var picElt = '<img src="' + pic + '" style="width:80%;height:100%">'
+    var picElt = '<img src="' + pic + '" style="width:60%;height:100%">'
     picprompt.innerHTML=picElt;
     console.log("character"+character)
     window.character = character;
