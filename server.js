@@ -77,8 +77,23 @@ var server = http.createServer(function (req, res) {
         case '/assets/items/catnip.png':
             sendFile(res, 'assets/items/catnip.png')
             break
-        case '/assets/items/cat.png':
-            sendFile(res, 'assets/items/cat.png')
+        case '/assets/items/doorLeft.png':
+            sendFile(res, 'assets/items/doorLeft.png')
+            break
+        case '/assets/items/doorRight.png':
+            sendFile(res, 'assets/items/doorRight.png')
+            break
+        case '/assets/items/window.png':
+            sendFile(res, 'assets/items/window.png')
+            break
+        case '/assets/items/boardedwindow.png':
+            sendFile(res, 'assets/items/boardedwindow.png')
+            break
+        case '/assets/items/rock.png':
+            sendFile(res, 'assets/items/rock.png')
+            break
+        case '/assets/items/lighter.png':
+            sendFile(res, 'assets/items/lighter.png')
             break
         case '/inspect':
             inspectObject(req, res)
