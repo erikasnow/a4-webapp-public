@@ -64,6 +64,13 @@ var server = http.createServer(function (req, res) {
         case '/js/requestToServer.js':
             sendFile(res, 'js/requestToServer.js', 'text/javascript')
             break
+        //IMAGES//
+        case '/assets/scenes/mansion.png':
+            sendFile(res, 'assets/scenes/mansion.png')
+            break
+        case '/assets/items/tree.png':
+            sendFile(res, 'assets/items/tree.png')
+            break
         case '/assets/items/placeholder.png':
             sendFile(res, 'assets/items/placeholder.png')
             break

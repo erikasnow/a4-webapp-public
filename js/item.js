@@ -38,7 +38,7 @@ function itemSelection(inventoryNumber){
     }
     window.inventoryActive2= window.inventoryActive;
     window.inventoryActive = itemId;
-    if(iteId !=""){
+    if(itemId !=""){
         displayItem(itemId, parseInt(inventory,10));
     }
 }
