@@ -20,34 +20,9 @@ function getPlayerIndex(player) {
 }
 */
 
-exports.isUsable = function(player, object_id) {
-    var query = `SELECT e_use, a_use, j_use, k_use FROM inventory WHERE obj_id = '${object_id}';`;
+function getUseId(player, object_id) {
 
-    client.query(query, function (err, result) {
-        if (result.rows.length === 1) {
-            switch(player) {
-                case 'Erika': return result.rows[0].e_use;
-                case 'Ally': return result.rows[0].a_use;
-                case 'Joan': return result.rows[0].j_use;
-                case 'Krysta': return result.rows[0].k_use;
-            }
-        } else {
-            return null;
-        }
-    });
-};
-
-exports.getUseId = function(player, object_id) {
-    var use_id = null;
-    var num = isUsable(player, object_id);
-
-    if (num !== null) { // Usable object to player
-        use_id = object_id + num;
-        console.log('use_id: ' + use_id);
-    }
-
-    return use_id;
-};
+}
 
 exports.getDescription = function(player, object_id) {
     var use_id = getUseId(player, object_id);
@@ -67,21 +42,37 @@ exports.getDescription = function(player, object_id) {
 };
 
 exports.getInspectResult = function(player, obj_id, res) {
-    var id = getUseId(player, obj_id);
-    console.log('Id is: ' + id);
+    var obj_idQuery = `SELECT * FROM inventory WHERE obj_id = '${obj_id}';`;
 
-    console.log("Calling inspect result");
+    client.query(obj_idQuery, function (err, result) {
+        var use_id;
 
-    var use_id = getUseId(player, obj_id);
-    console.log('Getting inspect result, use_id: ' + use_id);
-    var query = `SELECT inspect_result FROM object_use WHERE use_id = '${use_id}';`;
-
-    client.query(query, function(err, result) {
-        if (result.rows.length === 1) {
-            res.end(result.rows[0].inspect_result);
-        } else {
-            res.end();
+        switch (player) {
+            case 'Erika':
+                use_id = obj_id + result.rows[0].e_use;
+                break;
+            case 'Ally':
+                use_id = obj_id + result.rows[0].a_use;
+                break;
+            case 'Joan':
+                use_id = obj_id + result.rows[0].j_use;
+                break;
+            case 'Krysta':
+                use_id = obj_id + result.rows[0].k_use;
+                break;
         }
+
+        console.log('Getting inspect result, use_id: ' + use_id);
+
+        var inspect_idQuery = `SELECT inspect_result FROM object_use WHERE use_id = '${use_id}';`;
+
+        client.query(inspect_idQuery, function(err, result) {
+            if (result.rows.length === 1) {
+                res.end(result.rows[0].inspect_result);
+            } else {
+                res.end();
+            }
+        });
     });
 };
 

@@ -102,7 +102,7 @@ var server = http.createServer(function (req, res) {
             sendFile(res, 'assets/items/keyDoor.png')
             break
         case '/inspect':
-            console.log('Inspecting request');
+            console.log('Inspecting request')
             inspectObject(req, res)
             break
         case '/interaction':

@@ -7,6 +7,7 @@ var scoreReq = new XMLHttpRequest();
 inspectReq.onreadystatechange = function() {
     if (this.readyState === 4 && this.status === 200) {
         window.inspectResult = this.responseText;
+        console.log("Inspect result: " + this.responseText);
     }
 };
 
