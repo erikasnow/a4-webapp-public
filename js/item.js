@@ -161,7 +161,7 @@ function addToInventory(itemId) {
 function deleteFromInventory() {
     var cellsRow = document.getElementById("inventoryCells");
     var cells = cellsRow.getElementsByTagName("td");
-    cells[window.activeSlot -1].innerHTML= "";
+    cells[window.activeSlot-1].innerHTML= "";
     var prompt = document.getElementById("objectInfo");
     prompt.innerHTML="";
     var picprompt = document.getElementById("objectPicture");
