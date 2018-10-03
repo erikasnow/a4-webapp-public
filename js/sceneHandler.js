@@ -7,6 +7,11 @@ function changeScreen(newScreen, removeInventory) {
     }
 }
 
+function interaction(itemId, sceneId){
+    //got to db to get interaction
+    //run the functions in the db
+}
+
 function clearInventory() {
     var cellsRow = document.getElementById("inventoryCells");
     var cells = cellsRow.getElementsByTagName("td");
