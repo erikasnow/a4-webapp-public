@@ -1,24 +1,40 @@
 //clickable for each charcter
 function chooseCharacter(character){
-    var picprompt = document.getElementById("objectPicture");
-    picprompt.innerHTML= "";
-    var pic = 'assets/characters/'+character + '.png';
-    var picElt = '<img src="' + pic + '" style="width:60%;height:100%">'
-    picprompt.innerHTML=picElt;
+   
     console.log("character"+character)
     window.character = character;
-    console.log(window.character)
     updateInventory();
     displayCharacterDescription(character)
+}
+
+function giveKey(){
+    var picprompt = document.getElementById("objectPicture");
+    picprompt.innerHTML= "";
+    let textprompt = document.getElementById("objectInfo");
+    textprompt.innerHTML = "Bambi gave you the key!";
 }
 
 function updateStartButton(){
     var btn = document.getElementById("StartBtn");
     btn.removeAttribute("disabled")
 }
+function bambi(character){
+    if(character =="Ally"){
+        var cat = document.getElementById("cat");
+        cat.removeAttribute("hidden");
+    } else {
+        var cat = document.getElementById("cat");
+        cat.hidden=true;
+    }
+}
 
 //put character information in text above
 function displayCharacterDescription(character){
+    var picprompt = document.getElementById("objectPicture");
+    picprompt.innerHTML= "";
+    var pic = 'assets/characters/'+character + '.png';
+    var picElt = '<img src="' + pic + '" style="width:60%;height:100%">'
+    picprompt.innerHTML=picElt;
     let textprompt = document.getElementById("objectInfo");
     let text;
     switch (character) {

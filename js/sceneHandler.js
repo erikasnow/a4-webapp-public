@@ -12,6 +12,31 @@ function interaction(useId, sceneId){
     performAction(useId, sceneId);
 }
 
+function interaction2(useId, sceneId){
+    if(useId == 'rock5' && sceneId=='window'){
+        imageDisappear('window');
+        var btn = document.getElementById("endScreenBtn")
+        btn.removeAttribute("disabled")
+    } 
+    if (useId == 'lighter1' && sceneId == "boardedwindow") {
+        imageDisappear('boardedwindow');
+        var btn = document.getElementById("endScreenBtn")
+        btn.removeAttribute("disabled")
+    }
+    
+    if (useId=='catnip1' && sceneId=='cat'){
+        var cat = document.getElementById("catKey")
+        cat.removeAttribute("hidden");
+        var catKey = document.getElementById("cat")
+        catKey.hidden = true;
+    } else if (sceneId =='cat'){
+        var picprompt = document.getElementById("objectPicture");
+        picprompt.innerHTML= "";
+        let textprompt = document.getElementById("objectInfo");
+        textprompt.innerHTML = "Bambi's playful";
+    }
+}
+
 function clearInventory() {
     var cellsRow = document.getElementById("inventoryCells");
     var cells = cellsRow.getElementsByTagName("td");

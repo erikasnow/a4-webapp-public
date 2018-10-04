@@ -46,7 +46,6 @@ function itemSelection(inventoryNumber) {
             description ='';
             break;
     }
-    console.log("ITEM"+ itemId+description)
     window.inventoryActive2 = window.inventoryActive;
     window.inventoryActive = itemId;
     if (itemId != "") {
@@ -75,8 +74,8 @@ function displayItem(itemId, inventoryNumber, description ="") {
          inspectD = { id: window.inventory[inventoryNumber].id, num: inventoryNumber };
     } else {
          inspectD = { id: itemId, num: inventoryNumber };
-
     }
+
     let picprompt = document.getElementById("objectPicture");
     picprompt.innerHTML = '<div style="text-align:center;">' + picElt + '<button  id = "inspectButton">inspect</button> </div>';
     if (window.inventory[inventoryNumber].inspected == false) {
@@ -87,6 +86,8 @@ function displayItem(itemId, inventoryNumber, description ="") {
     var inspectbutton = document.getElementById("inspectButton");
     inspectbutton.addEventListener('click', function () {
         inspect(inspectD);
+        window.inspectResult= "";
+
     });
 }
 function updateDisplayItem(itemId, inventoryNumber, description = "") {
@@ -94,7 +95,6 @@ function updateDisplayItem(itemId, inventoryNumber, description = "") {
     let picprompt = document.getElementById("objectPicture");
     let text = description;
     var picID;
-    console.log("invenum"+ inventoryNumber+ window.inventory[inventoryNumber])
     if(window.inventory[inventoryNumber].id != undefined){
          picID = stripName( window.inventory[inventoryNumber].id)
     } else {
@@ -112,8 +112,9 @@ function updateDisplayItem(itemId, inventoryNumber, description = "") {
     textprompt.innerHTML = text;
     var inspectbutton = document.getElementById("inspectButton");
     inspectbutton.addEventListener('click', function () {
-        console.log("FROM UPDATE")
         inspect(inspectD);
+        window.inspectResult= "";
+
     });
 }
 
@@ -128,11 +129,9 @@ function inspect(inspected) {
     let itemId = inspected.id;
     let inventoryNumber = inspected.num;
     var id = itemId
-    console.log("IMVE"+ window.inventory[inventoryNumber].id)
     if(window.inventory[inventoryNumber].inspected==false){
         getInspectResultId(window.character, id);
         var result = (window.inspectResult)
-        console.log("result1" + result+ typeof result)
         if(result != undefined) {
             window.inventory[inventoryNumber].inspected = true;
             window.inventory[inventoryNumber].id = result.use_id;
@@ -140,10 +139,8 @@ function inspect(inspected) {
         }
         updateDisplayItem(itemId, inventoryNumber, result.description);    
     } else {
-        //console.log("INSPECT2")
         getInspectResultId2( window.inventory[inventoryNumber].id);
         var result = (window.inspectResult)
-        console.log("result2" + result+ typeof result)
         if(result != undefined) {
             window.inventory[inventoryNumber].inspected = true;
             window.inventory[inventoryNumber].id = result.use_id;
@@ -157,9 +154,8 @@ function inspect(inspected) {
 //takes in array
 function updateInventory() {
     console.log("Update Inventory")
-    for (let i = 1; i >= window.inventory.length; i++) {
-        inspect(window.inventory[i]);
-    }
+    var inspectD;
+  
 }
 
 //add the item to the character inventory
@@ -175,19 +171,19 @@ function addToInventory(itemId) {
     var emptyCell = cells[0];
     window.inventoryActive=itemId
     for (let i = 0; i < cells.length; i++) {
-        //console.log("entered for loop")
         if (cells[i].innerHTML == '') {
-            //console.log("found empty cell");
             emptyCell = cells[i];
             var num = i + 1;
-            window.inventory[num].id = itemId;
-            //console.log("add"+ window.inventory[num].id)
+            window.inventory[num]= {id:"", inspected:false, desciption:""};
+
+            window.inventory[num].id = itemId;          
+
+            console.log("add"+ window.inventory[num].id)
             break;
         }
     }
 
     emptyCell.innerHTML = picElt;
-    //console.log("should have added picture to inventory");
 }
 
 function deleteFromInventory() {
