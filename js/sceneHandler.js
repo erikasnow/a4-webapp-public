@@ -35,6 +35,13 @@ function interaction2(useId, sceneId){
         let textprompt = document.getElementById("objectInfo");
         textprompt.innerHTML = "Bambi's playful";
     }
+    console.log("here"+ useId+sceneId)
+    if (useId == 'keyDoor1' &&(sceneId =='doorLeft' || sceneId == 'doorRight')) {
+        imageDisappear('doorLeft');
+        imageDisappear('doorRight');
+        var btn = document.getElementById("endScreenBtn")
+        btn.removeAttribute("disabled")
+    }
 }
 
 function clearInventory() {

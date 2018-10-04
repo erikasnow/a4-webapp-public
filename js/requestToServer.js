@@ -20,15 +20,14 @@ describeReq.onreadystatechange = function() {
 };
 
 // Get interaction
-actionReq.onreadystatechange = function() {
-    if (this.readyState === 4 && this.status === 200) {
-        if (this.responseText !== "") {
-            eval("var action_fcn = function() {" + this.responseText + ";}");
+actionReq.onload = function() {
+        if (actionReq.responseText !== "") {
+            eval("var action_fcn = function() {" + actionReq.responseText + ";}");
             action_fcn();
         }
 
-        console.log("function is: " + this.responseText);
-    }
+        console.log("function is: " + actionReq.responseText);
+        
 };
 
 addReq.onreadystatechange = function() {
