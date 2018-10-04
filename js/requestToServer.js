@@ -24,19 +24,12 @@ describeReq.onreadystatechange = function() {
 // Get interaction
 actionReq.onreadystatechange = function() {
     if (this.readyState === 4 && this.status === 200) {
-        console.log("Calling function: " + this.responseText);
-        eval("var action_fcn = function() {" + this.responseText + ";}");
-        action_fcn();
+        if (this.responseText !== "") {
+            eval("var action_fcn = function() {" + this.responseText + ";}");
+            action_fcn();
+        }
     }
 };
-
-function test() {
-    console.log("5 + 5 = 10");
-}
-
-function test(sum) {
-    console.log(sum);
-}
 
 addReq.onreadystatechange = function() {
     if (this.readyState === 4 && this.status === 200) {

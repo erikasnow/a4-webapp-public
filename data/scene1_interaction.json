@@ -1,1 +1,6 @@
-[{"use_id": "rock0", "scene_id": "1", "action": "test(5)"}]
+[{"use_id": "rock5", "scene_id": "1", "action": "test()"},
+  {"use_id": "keyDoor", "scene_id": "1", "action": "test(5)"},
+  {"use_id": "keyDoor", "scene_id": "1", "action": ""},
+  {"use_id": "catnip1", "scene_id": "1", "action": ""},
+  {"use_id": "lighter1", "scene_id": "1", "action": ""}
+]
