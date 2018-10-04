@@ -104,6 +104,7 @@ exports.getFunction = function(use_id, scene_id, res) {
 
     client.query(query, function(err, result) {
         if (result.rows.length > 0) {
+            console.log("Function is: " + result.rows[0].action);
             res.end(result.rows[0].action);
         } else {
             res.end();

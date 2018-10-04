@@ -7,8 +7,8 @@ var scoreReq = new XMLHttpRequest();
 
 // Get inspect use_id
 inspectReq.onload = function() {
-        window.inspectResult = JSON.parse(inspectReq.responseText);
-        console.log("Inspect result: " + inspectReq.responseText);    
+    window.inspectResult = JSON.parse(inspectReq.responseText);
+    console.log("Inspect result: " + inspectReq.responseText);
 }
 inspectReq2.onload = function() {
     console.log("Inspect result2: " + inspectReq2.responseText);    
@@ -21,13 +21,22 @@ describeReq.onreadystatechange = function() {
     }
 };
 
-
 // Get interaction
 actionReq.onreadystatechange = function() {
     if (this.readyState === 4 && this.status === 200) {
-        window[this.responseText];
+        console.log("Calling function: " + this.responseText);
+        eval("var action_fcn = function() {" + this.responseText + ";}");
+        action_fcn();
     }
 };
+
+function test() {
+    console.log("5 + 5 = 10");
+}
+
+function test(sum) {
+    console.log(sum);
+}
 
 addReq.onreadystatechange = function() {
     if (this.readyState === 4 && this.status === 200) {
@@ -36,13 +45,12 @@ addReq.onreadystatechange = function() {
 };
 
 scoreReq.onload = function() {
-        console.log(this.responseText);
-        var data = JSON.parse(this.responseText);
+    console.log(this.responseText);
+    var data = JSON.parse(this.responseText);
 
-        if (data.length > 0) {
-            fillTable(data);
-        }
-    
+    if (data.length > 0) {
+        fillTable(data);
+    }
 };
 
 function fillTable(data) {
@@ -77,8 +85,9 @@ function performAction(use_id, scene_id) {
     interacting.use_id = use_id;
     interacting.scene_id = scene_id;
 
-    actionReq.open('GET', '/interaction');
-    actionReq.setRequestHeader('Content-type', 'application/json');
+    console.log(JSON.stringify(interacting));
+
+    actionReq.open('POST', '/interaction');
     actionReq.send(JSON.stringify(interacting));
 }
 
