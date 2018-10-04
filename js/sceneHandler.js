@@ -8,7 +8,7 @@ function changeScreen(newScreen, removeInventory) {
 }
 
 function interaction(useId, sceneId){
-
+    console.log("INTERACTION: " + useId + " with scene_id " + sceneId);
     performAction(useId, sceneId);
 }
 
@@ -43,6 +43,7 @@ function itemclick(itemId){
 
 //dissapear
 function imageDisappear(imageId){
+    console.log("In image disappear!");
     document.getElementById(imageId).style.display = "none";
 }
 

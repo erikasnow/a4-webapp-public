@@ -28,6 +28,8 @@ actionReq.onreadystatechange = function() {
             eval("var action_fcn = function() {" + this.responseText + ";}");
             action_fcn();
         }
+
+        console.log("function is: " + this.responseText);
     }
 };
 
@@ -78,7 +80,7 @@ function performAction(use_id, scene_id) {
     interacting.use_id = use_id;
     interacting.scene_id = scene_id;
 
-    console.log(JSON.stringify(interacting));
+    console.log("Performing action on: " + JSON.stringify(interacting));
 
     actionReq.open('POST', '/interaction');
     actionReq.send(JSON.stringify(interacting));

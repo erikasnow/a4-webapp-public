@@ -53,6 +53,17 @@ function itemSelection(inventoryNumber) {
         displayItem(itemId, parseInt(inventory, 10), description);
     }
 }
+
+function interact(scene_id) {
+    if (window.character === "Ally") {
+        //interaction(obj_id + "1", scene_id);
+        performAction(window.inventoryActive + "1", scene_id);
+    } else if (window.character === "Krysta") {
+        //interaction(obj_id + "0", scene_id);
+        performAction(window.inventoryActive + "0", scene_id);
+    }
+}
+
 function displayItem(itemId, inventoryNumber, description ="") {
     let textprompt = document.getElementById("objectInfo");
     let text = description;
