@@ -12,6 +12,8 @@ function giveKey(){
     picprompt.innerHTML= "";
     let textprompt = document.getElementById("objectInfo");
     textprompt.innerHTML = "Bambi gave you the key!";
+    var cat = document.getElementById("cat")
+    cat.removeAttribute("hidden")
 }
 
 function updateStartButton(){

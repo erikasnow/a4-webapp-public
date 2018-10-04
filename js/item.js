@@ -56,7 +56,7 @@ function itemSelection(inventoryNumber) {
 function interact(scene_id) {
     if (window.character === "Ally") {
         //interaction(obj_id + "1", scene_id);
-        performAction(window.inventoryActive + "1", scene_id);
+        performAction(window.inventoryActive, scene_id);
     } else if (window.character === "Krysta") {
         //interaction(obj_id + "0", scene_id);
         performAction(window.inventoryActive + "0", scene_id);
@@ -64,17 +64,20 @@ function interact(scene_id) {
 }
 
 function displayItem(itemId, inventoryNumber, description ="") {
+    var inspectD;
+    if(window.inventory[inventoryNumber].id != undefined){
+         inspectD = { id: window.inventory[inventoryNumber].id, num: inventoryNumber };
+         itemId = window.inventory[inventoryNumber].id
+    } else {
+         inspectD = { id: itemId, num: inventoryNumber };
+    }
+    console.log("ITEM ID"+itemId+ window.inventory[inventoryNumber].description)
     let textprompt = document.getElementById("objectInfo");
     let text = description;
     var picID = stripName(itemId)
     var pic = "assets/items/" + picID + '.png';
     var picElt = '<img src="' + pic + '" style="width:100%;height:80%">'
-    var inspectD;
-    if(window.inventory[inventoryNumber].id != undefined){
-         inspectD = { id: window.inventory[inventoryNumber].id, num: inventoryNumber };
-    } else {
-         inspectD = { id: itemId, num: inventoryNumber };
-    }
+    
 
     let picprompt = document.getElementById("objectPicture");
     picprompt.innerHTML = '<div style="text-align:center;">' + picElt + '<button  id = "inspectButton">inspect</button> </div>';
@@ -91,23 +94,29 @@ function displayItem(itemId, inventoryNumber, description ="") {
     });
 }
 function updateDisplayItem(itemId, inventoryNumber, description = "") {
+    var inspectD;
+    if(window.inventory[inventoryNumber].id != undefined){
+         inspectD = { id: window.inventory[inventoryNumber].id, num: inventoryNumber };
+         itemId = window.inventory[inventoryNumber].id
+    } else {
+         inspectD = { id: itemId, num: inventoryNumber };
+    }
     let textprompt = document.getElementById("objectInfo");
     let picprompt = document.getElementById("objectPicture");
     let text = description;
-    var picID;
-    if(window.inventory[inventoryNumber].id != undefined){
-         picID = stripName( window.inventory[inventoryNumber].id)
-    } else {
-         picID = stripName(itemId);
-    }
+    var picID =stripName(itemId);
+    console.log("ITEM ID2"+itemId+ window.inventory[inventoryNumber].description)
+
     var pic = "assets/items/" + picID + '.png';
     var picElt = '<img src="' + pic + '" style="width:100%;height:80%">'
-    let inspectD;
-    if(window.inventory[inventoryNumber].id == undefined){
-        inspectD = { id:  itemId, num: inventoryNumber };
-    } else {
-        inspectD = { id:  window.inventory[inventoryNumber].id, num: inventoryNumber };
-    }
+
+    var pic2 = "assets/items/" + picID + '.png';
+    var picElt2 = '<img src="' + pic2 + '" style="width:50%;height:25%">';
+    var cellsRow = document.getElementById("inventoryCells");
+    var cells = cellsRow.getElementsByTagName("td");
+    cells[inventoryNumber-1].innerHTML = picElt2
+
+
     picprompt.innerHTML = '<div style="text-align:center;">' + picElt + '<button  id = "inspectButton">inspect</button> </div>';
     textprompt.innerHTML = text;
     var inspectbutton = document.getElementById("inspectButton");
@@ -146,7 +155,7 @@ function inspect(inspected) {
             window.inventory[inventoryNumber].id = result.use_id;
             window.inventory[inventoryNumber].description = result.description
         }
-        updateDisplayItem( itemId, inventoryNumber, result.description);
+        updateDisplayItem(itemId, inventoryNumber, result.description);
     }
 }
 
