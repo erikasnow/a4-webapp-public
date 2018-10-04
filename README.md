@@ -1,23 +1,10 @@
-
-Do the following to complete this assignment:
-
-1. Fork the starting project repo.
-2. Implement your project with the above requirements.
-3. Test your project to make sure that when someone goes to your main page, it displays correctly.
-4. Deploy your project to Heroku or equivalent hosting platform.
-5. **Ensure that your project has the proper naming scheme `a4-yourGitHubName` or `a4-yourTeamName` so we can find it.**
-6. Modify the Readme to the specifications below.
-7. Create and submit a Pull Request to the original repo.
-
-
----
-
 ## We're a bit loud | GAMING | Brains, Brawn, and Bambi
 `Joan Wong`
 `Alexandra Wheeler`
 `Erika Snow`
 `Krysta Murdy`
 
+https://a4-jwong3.herokuapp.com/
 
 Single player, point and click, escape the room type game.
 
