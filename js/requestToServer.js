@@ -19,8 +19,9 @@ describeReq.onreadystatechange = function() {
 // Get interaction
 actionReq.onreadystatechange = function() {
     if (this.readyState === 4 && this.status === 200) {
-        var fcn = Function(this.responseText);
-        fcn();
+        console.log("Calling function: " + this.responseText);
+        eval("var action_fcn = function() {" + this.responseText + ";}");
+        action_fcn();
     }
 };
 
@@ -29,7 +30,7 @@ function test() {
 }
 
 function test(sum) {
-    console.log("Hi");
+    console.log(sum);
 }
 
 addReq.onreadystatechange = function() {
@@ -79,8 +80,9 @@ function performAction(use_id, scene_id) {
     interacting.use_id = use_id;
     interacting.scene_id = scene_id;
 
-    actionReq.open('GET', '/interaction');
-    actionReq.setRequestHeader('Content-type', 'application/json');
+    console.log(JSON.stringify(interacting));
+
+    actionReq.open('POST', '/interaction');
     actionReq.send(JSON.stringify(interacting));
 }
 
