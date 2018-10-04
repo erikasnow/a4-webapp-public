@@ -8,6 +8,7 @@ function changeScreen(newScreen, removeInventory) {
 }
 
 function interaction(useId, sceneId){
+
     performAction(useId, sceneId);
 }
 
@@ -46,7 +47,6 @@ function imageDisappear(imageId){
 }
 
 function imageAppear(imageName, xpos, ypos){
-
 }
 
 //movepos is a percentage, everything is done off of the bottom right corner
