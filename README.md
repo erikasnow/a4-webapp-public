@@ -22,6 +22,7 @@ Sample Readme (delete the above when you're ready to submit, and modify the belo
 Single player, point and click, escape the room type game.
 
 There is a tutorial room for a point and click type game. There are four different characters that can be changed. Each character allows the player access to use different items that may be useless to another player. Ie the character joan is the only one that can use the lighter. There is a scoring mechanism in which the score is calculated based on time. 
+You currently cannot switch a character during a level.
 
 We are having a few sync issues with the game. You may need to press the inspect button a few times for it to respond.
 

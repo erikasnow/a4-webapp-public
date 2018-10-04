@@ -12,13 +12,27 @@ function chooseCharacter(character){
     displayCharacterDescription(character)
 }
 
+function giveKey(){
+    alert("Bambi gave you the key!");
+}
+
 function updateStartButton(){
     var btn = document.getElementById("StartBtn");
     btn.removeAttribute("disabled")
 }
+function bambi(character){
+    if(character =="Ally"){
+        var cat = document.getElementById("catKey");
+        cat.removeAttribute("hidden");
+    } else {
+        var cat = document.getElementById("catKey");
+        cat.hidden=true;
+    }
+}
 
 //put character information in text above
 function displayCharacterDescription(character){
+    
     let textprompt = document.getElementById("objectInfo");
     let text;
     switch (character) {

@@ -17,6 +17,8 @@ function start() {
     window.inventory[6]= {id:"", inspected:false, desciption:""};
     window.timerTime=null;
     window.inspectResultReceived =0;
+    window.activeSlot = "";
+    window.inspectResult= "";
     
 }
 //Start playing music if we want any

@@ -46,7 +46,7 @@ function itemSelection(inventoryNumber) {
             description ='';
             break;
     }
-    console.log("ITEM"+ itemId+description)
+    console.log("ITEM"+ inventoryNumber +itemId+description)
     window.inventoryActive2 = window.inventoryActive;
     window.inventoryActive = itemId;
     if (itemId != "") {
@@ -76,6 +76,8 @@ function displayItem(itemId, inventoryNumber, description ="") {
     var inspectbutton = document.getElementById("inspectButton");
     inspectbutton.addEventListener('click', function () {
         inspect(inspectD);
+        window.inspectResult= "";
+
     });
 }
 function updateDisplayItem(itemId, inventoryNumber, description = "") {
@@ -103,6 +105,8 @@ function updateDisplayItem(itemId, inventoryNumber, description = "") {
     inspectbutton.addEventListener('click', function () {
         console.log("FROM UPDATE")
         inspect(inspectD);
+        window.inspectResult= "";
+
     });
 }
 
@@ -146,9 +150,8 @@ function inspect(inspected) {
 //takes in array
 function updateInventory() {
     console.log("Update Inventory")
-    for (let i = 1; i >= window.inventory.length; i++) {
-        inspect(window.inventory[i]);
-    }
+    var inspectD;
+  
 }
 
 //add the item to the character inventory
@@ -169,8 +172,11 @@ function addToInventory(itemId) {
             //console.log("found empty cell");
             emptyCell = cells[i];
             var num = i + 1;
-            window.inventory[num].id = itemId;
-            //console.log("add"+ window.inventory[num].id)
+            window.inventory[num]= {id:"", inspected:false, desciption:""};
+
+            window.inventory[num].id = itemId;          
+
+            console.log("add"+ window.inventory[num].id)
             break;
         }
     }

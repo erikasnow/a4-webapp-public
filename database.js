@@ -42,7 +42,7 @@ exports.getInspectResult = function(player, obj_id, res) {
                 use_id = obj_id + result.rows[0].k_use;
                 break;
         }
-
+        console.log("player"+ player)
         console.log('Getting inspect result, use_id: ' + use_id);
 
         var inspect_idQuery = `SELECT * FROM object_use WHERE use_id = '${use_id}';`;
