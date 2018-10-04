@@ -8,10 +8,8 @@ var scoreReq = new XMLHttpRequest();
 // Get inspect use_id
 inspectReq.onload = function() {
     window.inspectResult = JSON.parse(inspectReq.responseText);
-    console.log("Inspect result: " + inspectReq.responseText);
 }
 inspectReq2.onload = function() {
-    console.log("Inspect result2: " + inspectReq2.responseText);    
     window.inspectResult = JSON.parse(inspectReq2.responseText);
 }
 describeReq.onreadystatechange = function() {
@@ -91,8 +89,6 @@ function getInspectResultId(player, obj_id) {
     inspecting.player = player;
     inspecting.obj_id = obj_id;
 
-    console.log(JSON.stringify(inspecting));
-
     inspectReq.open('POST', '/inspect');
     inspectReq.send(JSON.stringify(inspecting));
 }
@@ -100,8 +96,6 @@ function getInspectResultId2(obj_id) {
     var inspecting = {};
 
     inspecting.obj_id = obj_id;
-
-    console.log(JSON.stringify(inspecting));
 
     inspectReq2.open('POST', '/inspect2');
     inspectReq2.send(JSON.stringify(inspecting));

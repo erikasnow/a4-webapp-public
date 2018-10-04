@@ -25,7 +25,6 @@ function startTimer(duration) {
 
 function timerStop(){
      window.timerTime = window.timer;
-     console.log(window.timerTime)
      var timerD = document.getElementById("timerDisplay");
     timerD.innerText="";
     clearInterval(timerO)

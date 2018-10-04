@@ -22,6 +22,18 @@ function interaction2(useId, sceneId){
         var btn = document.getElementById("endScreenBtn")
         btn.removeAttribute("disabled")
     }
+    
+    if (useId=='catnip1' && sceneId=='cat'){
+        var cat = document.getElementById("catKey")
+        cat.removeAttribute("hidden");
+        var catKey = document.getElementById("cat")
+        catKey.hidden = true;
+    } else if (sceneId =='cat'){
+        var picprompt = document.getElementById("objectPicture");
+        picprompt.innerHTML= "";
+        let textprompt = document.getElementById("objectInfo");
+        textprompt.innerHTML = "Bambi's playful";
+    }
 }
 
 function clearInventory() {

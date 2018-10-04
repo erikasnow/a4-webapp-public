@@ -24,13 +24,13 @@ Single player, point and click, escape the room type game.
 There is a tutorial room for a point and click type game. There are four different characters that can be changed. Each character allows the player access to use different items that may be useless to another player. Ie the character joan is the only one that can use the lighter. There is a scoring mechanism in which the score is calculated based on time. 
 You currently cannot switch a character during a level.
 
-We are having a few sync issues with the game. You may need to press the inspect button a few times for it to respond.
+We are having a few sync issues with the game. You may need to press the inspect button a few times for it to respond. Please be patient. These will be fixed in the final.
 
 Images are encouraged, along with concise, high-level text.
 
 ## Technical Achievements
 - **Tech Achievement 1**: As shown in `sceneHandler.js`, we have managed to move images when they are clicked so that we can hide oobjects behind other objects in the screen
-- **Tech Achievement 2**: Allowed different character options, each with a unique playthrough of the game. For this, we had to make many tables in our database in order to handle different characters interacting with the same objects. `INSERT IMAGE OF DATABASE`
+- **Tech Achievement 2**: Allowed different character options, each with a unique playthrough of the game. For this, we had to make many tables in our database in order to handle different characters interacting with the same objects. ![Alt Text](dbexample.png)
 - **Tech Achievement 3**: As shown in `mainScreen.js`, we created global variables using window variables in order to pass information between screens
 - **Tech Achievement 4**: Implemented a timer to make the score
 - **Tech Achievement 5**: 
