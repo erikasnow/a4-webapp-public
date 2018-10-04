@@ -1,3 +1,8 @@
-[{"use_id": "rock5", "name": "hello", "description": "", "inspect_result": "rock5"},
-  {"use_id": "rock1", "name": "test", "description": "again", "inspect_result": "rock1"},
-  {"use_id": "rock0", "name": "", "description": "again", "inspect_result": "rock5"}]
+[{"use_id": "rock5", "name": "hello", "description": "a rock", "inspect_result": "rock5"},
+  {"use_id": "keyDoor", "name": "", "description": "a key", "inspect_result": "keyDoor"},
+  {"use_id": "rock1", "name": "test", "description": "a light rock", "inspect_result": "keyDoor"},
+  {"use_id": "catnip0", "name": "catnip0", "description": "a weed", "inspect_result": "catnip0"},
+  {"use_id": "catnip1", "name": "catnip1", "description": "catnip", "inspect_result": "catnip1"},
+  {"use_id": "rock0", "name": "", "description": "a plain old rock", "inspect_result": "rock5"},
+  {"use_id": "lighter0", "name": "", "description": "a plain old lighter", "inspect_result": "lighter0"},
+{"use_id": "lighter1", "name": "", "description": "an evil lighter", "inspect_result": "lighter1"} ]

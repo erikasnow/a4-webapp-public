@@ -64,10 +64,13 @@ exports.getInspectResult2 = function(obj_id, res) {
 
         var inspect_idQuery = `SELECT inspect_result FROM object_use WHERE use_id = '${obj_id}';`;
         client.query(inspect_idQuery, function(err, result) {
-            if (result.rows.length === 1) {
+            console.log("INSPEC@ L"+result.rows.length)
+            if (result.rows.length == 1) {
                 var id = result.rows[0].inspect_result
-                var inspect_idQuery = `SELECT * FROM object_use WHERE use_id = '${id}';`;
-                client.query(inspect_idQuery, function(err, result2) {
+                console.log("New id "+ id)
+                var inspect_idQuery2 = `SELECT * FROM object_use WHERE use_id = '${id}';`;
+                client.query(inspect_idQuery2, function(err, result2) {
+                    console.log("Inspec3+="+ result2.rows.length)
                     if (result2.rows.length === 1) {
                         res.end(JSON.stringify(result2.rows[0]));
                     } else {

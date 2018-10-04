@@ -1,5 +1,6 @@
 var describeReq = new XMLHttpRequest();
 var inspectReq = new XMLHttpRequest();
+var inspectReq2 = new XMLHttpRequest();
 var actionReq = new XMLHttpRequest();
 var addReq = new XMLHttpRequest();
 var scoreReq = new XMLHttpRequest();
@@ -8,6 +9,10 @@ var scoreReq = new XMLHttpRequest();
 inspectReq.onload = function() {
         window.inspectResult = JSON.parse(inspectReq.responseText);
         console.log("Inspect result: " + inspectReq.responseText);    
+}
+inspectReq2.onload = function() {
+    console.log("Inspect result2: " + inspectReq2.responseText);    
+    window.inspectResult = JSON.parse(inspectReq2.responseText);
 }
 describeReq.onreadystatechange = function() {
     if (this.readyState === 4 && this.status === 200) {
@@ -92,13 +97,12 @@ function getInspectResultId(player, obj_id) {
 function getInspectResultId2(obj_id) {
     var inspecting = {};
 
-    inspecting.player = player;
     inspecting.obj_id = obj_id;
 
     console.log(JSON.stringify(inspecting));
 
-    inspectReq.open('POST', '/inspect2');
-    inspectReq.send(JSON.stringify(inspecting));
+    inspectReq2.open('POST', '/inspect2');
+    inspectReq2.send(JSON.stringify(inspecting));
 }
 function getDescription(use_id) {
     var usage = {};

@@ -105,6 +105,9 @@ var server = http.createServer(function (req, res) {
             console.log('Inspecting request')
             inspectObject(req, res)
             break
+        case '/inspect2':
+            inspectObject2(req, res)
+            break;
         case '/add':
             saveScore(req, res)
             break

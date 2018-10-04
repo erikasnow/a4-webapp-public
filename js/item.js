@@ -46,6 +46,7 @@ function itemSelection(inventoryNumber) {
             description ='';
             break;
     }
+    console.log("ITEM"+ itemId+description)
     window.inventoryActive2 = window.inventoryActive;
     window.inventoryActive = itemId;
     if (itemId != "") {
@@ -58,13 +59,19 @@ function displayItem(itemId, inventoryNumber, description ="") {
     var picID = stripName(itemId)
     var pic = "assets/items/" + picID + '.png';
     var picElt = '<img src="' + pic + '" style="width:100%;height:80%">'
-    var inspectD = { id: itemId, num: inventoryNumber };
+    var inspectD;
+    if(window.inventory[inventoryNumber].id != undefined){
+         inspectD = { id: window.inventory[inventoryNumber].id, num: inventoryNumber };
+    } else {
+         inspectD = { id: itemId, num: inventoryNumber };
+
+    }
     let picprompt = document.getElementById("objectPicture");
     picprompt.innerHTML = '<div style="text-align:center;">' + picElt + '<button  id = "inspectButton">inspect</button> </div>';
     if (window.inventory[inventoryNumber].inspected == false) {
-        textprompt.innerHTML = "???" + text;
+        textprompt.innerHTML = "???";
     } else {
-        textprompt.innerHTML = itemId + text;
+        textprompt.innerHTML = text;
     }
     var inspectbutton = document.getElementById("inspectButton");
     inspectbutton.addEventListener('click', function () {
@@ -75,20 +82,32 @@ function updateDisplayItem(itemId, inventoryNumber, description = "") {
     let textprompt = document.getElementById("objectInfo");
     let picprompt = document.getElementById("objectPicture");
     let text = description;
-    var picID = stripName(itemId)
+    var picID;
+    console.log("invenum"+ inventoryNumber+ window.inventory[inventoryNumber])
+    if(window.inventory[inventoryNumber].id != undefined){
+         picID = stripName( window.inventory[inventoryNumber].id)
+    } else {
+         picID = stripName(itemId);
+    }
     var pic = "assets/items/" + picID + '.png';
     var picElt = '<img src="' + pic + '" style="width:100%;height:80%">'
-
-    let inspectD = { id: itemId, num: inventoryNumber };
+    let inspectD;
+    if(window.inventory[inventoryNumber].id == undefined){
+        inspectD = { id:  itemId, num: inventoryNumber };
+    } else {
+        inspectD = { id:  window.inventory[inventoryNumber].id, num: inventoryNumber };
+    }
     picprompt.innerHTML = '<div style="text-align:center;">' + picElt + '<button  id = "inspectButton">inspect</button> </div>';
     textprompt.innerHTML = text;
     var inspectbutton = document.getElementById("inspectButton");
     inspectbutton.addEventListener('click', function () {
+        console.log("FROM UPDATE")
         inspect(inspectD);
     });
 }
 
 function stripName(itemId) {
+    //console.log("ID"+itemId +typeof itemId)
     return itemId.replace(/[0-9]/g, '');
 }
 
@@ -98,21 +117,28 @@ function inspect(inspected) {
     let itemId = inspected.id;
     let inventoryNumber = inspected.num;
     var id = itemId
+    console.log("IMVE"+ window.inventory[inventoryNumber].id)
     if(window.inventory[inventoryNumber].inspected==false){
         getInspectResultId(window.character, id);
         var result = (window.inspectResult)
-        console.log("result" + result+ typeof result)
+        console.log("result1" + result+ typeof result)
         if(result != undefined) {
             window.inventory[inventoryNumber].inspected = true;
+            window.inventory[inventoryNumber].id = result.use_id;
+            window.inventory[inventoryNumber].description = result.description
         }
         updateDisplayItem(itemId, inventoryNumber, result.description);    
     } else {
-        console.log("INSPECT2")
-        getInspectResultId(window.character, id);
+        //console.log("INSPECT2")
+        getInspectResultId2( window.inventory[inventoryNumber].id);
         var result = (window.inspectResult)
-        console.log("result" + result+ typeof result)
-        window.inventory[inventoryNumber].inspected = true;
-        updateDisplayItem(itemId, inventoryNumber, result.description);
+        console.log("result2" + result+ typeof result)
+        if(result != undefined) {
+            window.inventory[inventoryNumber].inspected = true;
+            window.inventory[inventoryNumber].id = result.use_id;
+            window.inventory[inventoryNumber].description = result.description
+        }
+        updateDisplayItem( itemId, inventoryNumber, result.description);
     }
 }
 
@@ -136,7 +162,7 @@ function addToInventory(itemId) {
     var cellsRow = document.getElementById("inventoryCells");
     var cells = cellsRow.getElementsByTagName("td");
     var emptyCell = cells[0];
-
+    window.inventoryActive=itemId
     for (let i = 0; i < cells.length; i++) {
         //console.log("entered for loop")
         if (cells[i].innerHTML == '') {

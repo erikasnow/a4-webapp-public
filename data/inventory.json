@@ -1,2 +1,4 @@
 [{"obj_id": "rock", "e_use": "5", "a_use": "0", "j_use": "0", "k_use": "1"},
-  {"obj_id": "paper", "e_use": "2", "a_use": "1", "j_use": "3", "k_use": "10"}]
+  {"obj_id": "catnip", "e_use": "0", "a_use": "1", "j_use": "0", "k_use": "0"},
+  {"obj_id": "lighter", "e_use": "0", "a_use": "0", "j_use": "1", "k_use": "0"},
+  {"obj_id": "keyDoor", "e_use": "0", "a_use": "1", "j_use": "0", "k_use": "1"}]

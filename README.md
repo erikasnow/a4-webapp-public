@@ -1,5 +1,3 @@
-Deliverables
----
 
 Do the following to complete this assignment:
 
@@ -20,15 +18,23 @@ Sample Readme (delete the above when you're ready to submit, and modify the belo
 `Erika Snow`
 `Krysta Murdy`
 
-Include a brief summary of your project here.
+
+Single player, point and click, escape the room type game.
+
+There is a tutorial room for a point and click type game. There are four different characters that can be changed. Each character allows the player access to use different items that may be useless to another player. Ie the character joan is the only one that can use the lighter. There is a scoring mechanism in which the score is calculated based on time. 
+
+We are having a few sync issues with the game. You may need to press the inspect button a few times for it to respond.
+
 Images are encouraged, along with concise, high-level text.
 
 ## Technical Achievements
 - **Tech Achievement 1**: As shown in `sceneHandler.js`, we have managed to move images when they are clicked so that we can hide oobjects behind other objects in the screen
 - **Tech Achievement 2**: Allowed different character options, each with a unique playthrough of the game. For this, we had to make many tables in our database in order to handle different characters interacting with the same objects. `INSERT IMAGE OF DATABASE`
-- **Tech Achievement 3**: As shown in `timer.js`, we created global variables using window variables in order to pass information between screens
+- **Tech Achievement 3**: As shown in `mainScreen.js`, we created global variables using window variables in order to pass information between screens
 - **Tech Achievement 4**: Implemented a timer to make the score
-
+- **Tech Achievement 5**: 
 
 ## Design/Evaluation Achievements
 - **Design Achievement 1**: Built in scalability so that we can expand for the final project and beyond
+- **Design Achievement 2**: Use of our own pictures and royalty free music
+- **Design Achievement 3**: Moving images 
