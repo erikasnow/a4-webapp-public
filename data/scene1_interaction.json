@@ -7,8 +7,8 @@
   {"use_id": "keyDoor0", "scene_id": "doorRight", "action": "imageDisappear(''doorRight'')"},
   {"use_id": "keyDoor0", "scene_id": "doorRight", "action": "disableEndScreenButton()"},
   {"use_id": "catnip1", "scene_id": "catKey", "action": "getKeyFromCat()"},
-  {"use_id": "catnip1", "scene_id": "catKey", "action": "imageDisappear(''catnip'')"},
   {"use_id": "catnip1", "scene_id": "catKey", "action": "addToInventory(''keyDoor'')"},
+  {"use_id": "catnip1", "scene_id": "catKey", "action": "imageDisappear(''catnip'')"},
   {"use_id": "lighter1", "scene_id": "boardedwindow", "action": "imageDisappear(''boardedwindow'')"},
   {"use_id": "lighter1", "scene_id": "boardedwindow", "action": "disableEndScreenButton()"}
 ]
