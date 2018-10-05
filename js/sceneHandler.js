@@ -9,15 +9,12 @@ function changeScreen(newScreen, removeInventory) {
 
 
 function disableEndScreenButton() {
-    var btn = document.getElementById("endScreenBtn");
-    btn.removeAttribute("disabled");
+    document.getElementById("endScreenBtn").removeAttribute("disabled");
 }
 
 function getKeyFromCat() {
-    var cat = document.getElementById("catKey");
-    cat.removeAttribute("hidden");
-    var catKey = document.getElementById("cat");
-    catKey.hidden = true;
+    document.getElementById("cat").removeAttribute("hidden");
+    document.getElementById("catKey").hidden = true;
 }
 
 /*
@@ -85,6 +82,7 @@ function itemclick(itemId){
 
 //dissapear
 function imageDisappear(imageId){
+    console.log("Disappearing image: " + imageId);
     document.getElementById(imageId).style.display = "none";
 }
 

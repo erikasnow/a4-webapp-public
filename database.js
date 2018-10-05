@@ -91,33 +91,38 @@ exports.getFunction = function(player, obj_id, scene_id, res) {
     var obj_idQuery = `SELECT * FROM inventory WHERE obj_id = '${obj_id}';`;
 
     client.query(obj_idQuery, function (err, result) {
-        var use_id;
+        if (result.rows.length > 0) {
+            var use_id;
 
-        switch (player) {
-            case 'Erika':
-                use_id = obj_id + result.rows[0].e_use;
-                break;
-            case 'Ally':
-                use_id = obj_id + result.rows[0].a_use;
-                break;
-            case 'Joan':
-                use_id = obj_id + result.rows[0].j_use;
-                break;
-            case 'Krysta':
-                console.log("KRYSTA")
-                use_id = obj_id + result.rows[0].k_use;
-                break;
+            switch (player) {
+                case 'Erika':
+                    use_id = obj_id + result.rows[0].e_use;
+                    break;
+                case 'Ally':
+                    use_id = obj_id + result.rows[0].a_use;
+                    break;
+                case 'Joan':
+                    use_id = obj_id + result.rows[0].j_use;
+                    break;
+                case 'Krysta':
+                    console.log("KRYSTA")
+                    use_id = obj_id + result.rows[0].k_use;
+                    break;
+            }
+
+            var query = `SELECT action FROM scene1_interaction WHERE use_id = '${use_id}' AND scene_id = '${scene_id}';`;
+
+            client.query(query, function (err, result2) {
+                if (result2.rows.length > 0) {
+                    res.end(JSON.stringify(result2.rows));
+                } else {
+                    res.end();
+                }
+            });
+        } else {
+            res.end();
         }
 
-        var query = `SELECT action FROM scene1_interaction WHERE use_id = '${use_id}' AND scene_id = '${scene_id}';`;
-
-        client.query(query, function (err, result2) {
-            if (result2.rows.length > 0) {
-                res.end(JSON.stringify(result2.rows));
-            } else {
-                res.end();
-            }
-        });
     });
 };
 
