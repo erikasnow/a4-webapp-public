@@ -26,7 +26,6 @@ actionReq.onload = function() {
         var functions = JSON.parse(this.responseText);
 
         for (i = 0; i < functions.length; i++) {
-            console.log("Performing function: " + functions[i].action);
             eval("var action_fcn = function() {" + functions[i].action + ";}");
             action_fcn();
         }

@@ -82,7 +82,6 @@ function itemclick(itemId){
 
 //dissapear
 function imageDisappear(imageId){
-    console.log("Disappearing image: " + imageId);
     document.getElementById(imageId).style.display = "none";
 }
 

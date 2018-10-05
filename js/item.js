@@ -152,7 +152,7 @@ function inspect(inspected) {
 //inventory switch between char selections
 //takes in array
 function updateInventory() {
-    console.log("Update Inventory")
+    console.log("Update Inventory");
     var inspectD;
   
 }
@@ -163,7 +163,14 @@ function addToInventory(itemId) {
     //put picture in the inventory
     var picID = stripName(itemId);
     var pic = "assets/items/" + picID + '.png';
-    var picElt = '<img id='+ itemId + ' src="' + pic + '" style="width:50%;height:25%">';
+
+    var picElt = document.getElementById(itemId);
+
+    if (picElt !== null) {
+        document.getElementById(itemId).parentNode.removeChild(picElt);
+    }
+
+    picElt = '<img id='+ itemId + ' src="' + pic + '" style="width:50%;height:25%">';
 
     var cellsRow = document.getElementById("inventoryCells");
     var cells = cellsRow.getElementsByTagName("td");
