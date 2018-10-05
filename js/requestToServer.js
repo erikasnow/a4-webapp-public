@@ -56,6 +56,7 @@ function fillTable(data) {
     }
 }
 
+// Gets top 10 scores
 function getScores() {
     scoreReq.open('GET', '/score');
     scoreReq.setRequestHeader('Content-type', 'application/json');
@@ -72,7 +73,6 @@ function addScore(name, score) {
     addReq.send(JSON.stringify(score_info));
 }
 
-// Need to figure out what to give this, and what we want - e.g use_id? inspect_result_id? (which is a use_id)
 function performAction(player, obj_id, scene_id) {
     if (obj_id !== undefined) {
         var interacting = {};
@@ -88,7 +88,6 @@ function performAction(player, obj_id, scene_id) {
     }
 }
 
-// Need to figure out what to give this, and what we want - e.g use_id? inspect_result_id? (which is a use_id)
 function getInspectResultId(player, obj_id) {
     var inspecting = {};
 

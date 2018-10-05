@@ -2,17 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="db41305d-0f44-4650-bb46-b53f86bad04f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/inventory.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/inventory.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/scene1_interaction.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/scene1_interaction.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database.js" beforeDir="false" afterPath="$PROJECT_DIR$/database.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/characterSelection.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/characterSelection.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/item.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/item.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/mainScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/mainScreen.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/requestToServer.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/requestToServer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/sceneHandler.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/sceneHandler.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/tutorialScreen.html" beforeDir="false" afterPath="$PROJECT_DIR$/screens/tutorialScreen.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -58,7 +48,7 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="html" value="413" />
-          <entry key="js" value="15682" />
+          <entry key="js" value="15711" />
           <entry key="json" value="487" />
           <entry key="md" value="1" />
         </counts>
@@ -67,7 +57,7 @@
         <counts>
           <entry key="HTML" value="414" />
           <entry key="JSON" value="487" />
-          <entry key="JavaScript" value="15681" />
+          <entry key="JavaScript" value="15710" />
           <entry key="PLAIN_TEXT" value="1" />
         </counts>
       </usages-collector>
@@ -84,7 +74,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/mainScreen.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="238">
@@ -96,8 +86,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data/scene1_interaction.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="70" lean-forward="true" selection-start-line="9" selection-start-column="70" selection-end-line="9" selection-end-column="70" />
+            <state relative-caret-position="187">
+              <caret line="11" column="1" lean-forward="true" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -120,11 +110,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/requestToServer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="232">
-              <caret line="82" selection-start-line="82" selection-end-line="82" />
+            <state relative-caret-position="436">
+              <caret line="82" lean-forward="true" selection-start-line="82" selection-end-line="82" />
             </state>
           </provider>
         </entry>
@@ -205,12 +195,12 @@
         <option value="$PROJECT_DIR$/js/characterSelection.js" />
         <option value="$PROJECT_DIR$/screens/tutorialScreen.html" />
         <option value="$PROJECT_DIR$/data/scene1_interaction.json" />
-        <option value="$PROJECT_DIR$/js/requestToServer.js" />
         <option value="$PROJECT_DIR$/js/sceneHandler.js" />
         <option value="$PROJECT_DIR$/database.js" />
         <option value="$PROJECT_DIR$/js/item.js" />
         <option value="$PROJECT_DIR$/data/inventory.json" />
         <option value="$PROJECT_DIR$/js/mainScreen.js" />
+        <option value="$PROJECT_DIR$/js/requestToServer.js" />
       </list>
     </option>
   </component>
@@ -335,12 +325,12 @@
       <workItem from="1538164067801" duration="2719000" />
       <workItem from="1538413464896" duration="8764000" />
       <workItem from="1538507394251" duration="8711000" />
-      <workItem from="1538721749170" duration="10287000" />
+      <workItem from="1538721749170" duration="10373000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="70329000" />
+    <option name="totallyTimeSpent" value="70415000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -533,13 +523,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/requestToServer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="82" selection-start-line="82" selection-end-line="82" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="303">
@@ -559,13 +542,6 @@
             <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/scene1_interaction.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="70" lean-forward="true" selection-start-line="9" selection-start-column="70" selection-end-line="9" selection-end-column="70" />
         </state>
       </provider>
     </entry>
@@ -594,6 +570,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" column="51" selection-start-line="14" selection-start-column="51" selection-end-line="14" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/scene1_interaction.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="1" lean-forward="true" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/requestToServer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="436">
+          <caret line="82" lean-forward="true" selection-start-line="82" selection-end-line="82" />
         </state>
       </provider>
     </entry>
