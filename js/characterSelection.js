@@ -3,6 +3,8 @@ function chooseCharacter(character){
    
     console.log("character"+character)
     window.character = character;
+    var inventoryHeader = document.getElementById("inventoryHeader");
+    inventoryHeader.innerText = "Current Character: " + character;
     updateInventory();
     displayCharacterDescription(character)
 }
@@ -58,7 +60,6 @@ function displayCharacterDescription(character){
     console.log(text)
     textprompt.innerHTML = character+ text;
 
-    var inventoryHeader = document.getElementById("inventoryHeader");
-    inventoryHeader.innerText = "Current Character: " + character;
+    
 }
 
