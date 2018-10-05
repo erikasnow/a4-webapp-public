@@ -1,3 +1,4 @@
+
 //can call a function in an other .js file if that js file is declared before the one prior
 
 //change what item is selected in the inventory
@@ -9,36 +10,36 @@ function itemSelection(inventoryNumber) {
         case "1":
             itemId = window.inventory[1].id;
             inventory = 1;
-            description = window.inventory[1].description
+            description = window.inventory[1].description;
             window.activeSlot = 1;
             break;
         case "2":
             itemId = window.inventory[2].id;
             inventory = 2;
-            description = window.inventory[2].description
+            description = window.inventory[2].description;
             window.activeSlot = 2;
             break;
         case "3":
             itemId = window.inventory[3].id;
             inventory = 3;
-            description = window.inventory[3].description
+            description = window.inventory[3].description;
             window.activeSlot = 3;
             break;
         case "4":
             itemId = window.inventory[4].id;
             inventory = 4;
-            description = window.inventory[4].description
+            description = window.inventory[4].description;
             window.activeSlot = 4;
             break;
         case "5":
             itemId = window.inventory[5].id;
             inventory = 5;
-            description = window.inventory[5].description
+            description = window.inventory[5].description;
             break;
         case "6":
             itemId = window.inventory[6].id;
             inventory = 6;
-            description = window.inventory[6].description
+            description = window.inventory[6].description;
             window.activeSlot = 6;
             break;
         default:
@@ -48,40 +49,30 @@ function itemSelection(inventoryNumber) {
     }
     window.inventoryActive2 = window.inventoryActive;
     window.inventoryActive = itemId;
-    if (itemId != "") {
+    if (itemId !== "") {
         displayItem(itemId, parseInt(inventory, 10), description);
-    }
-}
-
-function interact(scene_id) {
-    if (window.character === "Ally") {
-        //interaction(obj_id + "1", scene_id);
-        performAction(window.inventoryActive, scene_id);
-    } else if (window.character === "Krysta") {
-        //interaction(obj_id + "0", scene_id);
-        performAction(window.inventoryActive + "0", scene_id);
     }
 }
 
 function displayItem(itemId, inventoryNumber, description ="") {
     var inspectD;
-    if(window.inventory[inventoryNumber].id != undefined){
+    if(window.inventory[inventoryNumber].id !== undefined){
          inspectD = { id: window.inventory[inventoryNumber].id, num: inventoryNumber };
          itemId = window.inventory[inventoryNumber].id
     } else {
          inspectD = { id: itemId, num: inventoryNumber };
     }
-    console.log("ITEM ID"+itemId+ window.inventory[inventoryNumber].description)
+    console.log("ITEM ID"+itemId+ window.inventory[inventoryNumber].description);
     let textprompt = document.getElementById("objectInfo");
     let text = description;
-    var picID = stripName(itemId)
+    var picID = stripName(itemId);
     var pic = "assets/items/" + picID + '.png';
-    var picElt = '<img src="' + pic + '" style="width:100%;height:80%">'
+    var picElt = '<img src="' + pic + '" style="width:100%;height:80%">';
     
 
     let picprompt = document.getElementById("objectPicture");
-    picprompt.innerHTML = '<div style="text-align:center;">' + picElt + '<button  id = "inspectButton">inspect</button> </div>';
-    if (window.inventory[inventoryNumber].inspected == false) {
+    picprompt.innerHTML = '<div style="text-align:center;">' + picElt + '<button id = "inspectButton">inspect</button></div>';
+    if (window.inventory[inventoryNumber].inspected === false) {
         textprompt.innerHTML = "???";
     } else {
         textprompt.innerHTML = text;
@@ -95,7 +86,7 @@ function displayItem(itemId, inventoryNumber, description ="") {
 }
 function updateDisplayItem(itemId, inventoryNumber, description = "") {
     var inspectD;
-    if(window.inventory[inventoryNumber].id != undefined){
+    if(window.inventory[inventoryNumber].id !== undefined){
          inspectD = { id: window.inventory[inventoryNumber].id, num: inventoryNumber };
          itemId = window.inventory[inventoryNumber].id
     } else {
@@ -105,19 +96,19 @@ function updateDisplayItem(itemId, inventoryNumber, description = "") {
     let picprompt = document.getElementById("objectPicture");
     let text = description;
     var picID =stripName(itemId);
-    console.log("ITEM ID2"+itemId+ window.inventory[inventoryNumber].description)
+    console.log("ITEM ID2"+itemId+ window.inventory[inventoryNumber].description);
 
     var pic = "assets/items/" + picID + '.png';
-    var picElt = '<img src="' + pic + '" style="width:100%;height:80%">'
+    var picElt = '<img src="' + pic + '" style="width:100%;height:80%">';
 
     var pic2 = "assets/items/" + picID + '.png';
     var picElt2 = '<img src="' + pic2 + '" style="width:50%;height:25%">';
     var cellsRow = document.getElementById("inventoryCells");
     var cells = cellsRow.getElementsByTagName("td");
-    cells[inventoryNumber-1].innerHTML = picElt2
+    cells[inventoryNumber-1].innerHTML = picElt2;
 
 
-    picprompt.innerHTML = '<div style="text-align:center;">' + picElt + '<button  id = "inspectButton">inspect</button> </div>';
+    picprompt.innerHTML = '<div style="text-align:center;">' + picElt + '<button id = "inspectButton">inspect</button></div>';
     textprompt.innerHTML = text;
     var inspectbutton = document.getElementById("inspectButton");
     inspectbutton.addEventListener('click', function () {
@@ -137,23 +128,22 @@ function stripName(itemId) {
 function inspect(inspected) {
     let itemId = inspected.id;
     let inventoryNumber = inspected.num;
-    var id = itemId
-    if(window.inventory[inventoryNumber].inspected==false){
+    if(window.inventory[inventoryNumber].inspected === false){
         getInspectResultId(window.character, id);
-        var result = (window.inspectResult)
-        if(result != undefined) {
+        //var result = (window.inspectResult);
+        if(result !== undefined) {
             window.inventory[inventoryNumber].inspected = true;
             window.inventory[inventoryNumber].id = result.use_id;
-            window.inventory[inventoryNumber].description = result.description
+            window.inventory[inventoryNumber].description = result.description;
         }
         updateDisplayItem(itemId, inventoryNumber, result.description);    
     } else {
         getInspectResultId2( window.inventory[inventoryNumber].id);
-        var result = (window.inspectResult)
-        if(result != undefined) {
+        var result = (window.inspectResult);
+        if(result !== undefined) {
             window.inventory[inventoryNumber].inspected = true;
             window.inventory[inventoryNumber].id = result.use_id;
-            window.inventory[inventoryNumber].description = result.description
+            window.inventory[inventoryNumber].description = result.description;
         }
         updateDisplayItem(itemId, inventoryNumber, result.description);
     }
@@ -171,23 +161,23 @@ function updateInventory() {
 function addToInventory(itemId) {
     //console.log("entered addToInventory");
     //put picture in the inventory
-    var picID = stripName(itemId)
+    var picID = stripName(itemId);
     var pic = "assets/items/" + picID + '.png';
-    var picElt = '<img src="' + pic + '" style="width:50%;height:25%">';
+    var picElt = '<img id='+ itemId + ' src="' + pic + '" style="width:50%;height:25%">';
 
     var cellsRow = document.getElementById("inventoryCells");
     var cells = cellsRow.getElementsByTagName("td");
     var emptyCell = cells[0];
-    window.inventoryActive=itemId
+    window.inventoryActive = itemId;
     for (let i = 0; i < cells.length; i++) {
-        if (cells[i].innerHTML == '') {
+        if (cells[i].innerHTML === '') {
             emptyCell = cells[i];
             var num = i + 1;
-            window.inventory[num]= {id:"", inspected:false, desciption:""};
+            window.inventory[num]= {id:"", inspected:false, description:""};
 
             window.inventory[num].id = itemId;          
 
-            console.log("add"+ window.inventory[num].id)
+            console.log("add"+ window.inventory[num].id);
             break;
         }
     }

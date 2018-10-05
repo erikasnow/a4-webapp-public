@@ -8,10 +8,10 @@ var scoreReq = new XMLHttpRequest();
 // Get inspect use_id
 inspectReq.onload = function() {
     window.inspectResult = JSON.parse(inspectReq.responseText);
-}
+};
 inspectReq2.onload = function() {
     window.inspectResult = JSON.parse(inspectReq2.responseText);
-}
+};
 describeReq.onreadystatechange = function() {
     if (this.readyState === 4 && this.status === 200) {
         //window.inventory.active
@@ -21,13 +21,15 @@ describeReq.onreadystatechange = function() {
 
 // Get interaction
 actionReq.onload = function() {
-        if (actionReq.responseText !== "") {
-            eval("var action_fcn = function() {" + actionReq.responseText + ";}");
+    if (this.responseText !== "") {
+        var i;
+        var functions = JSON.parse(this.responseText);
+
+        for (i = 0; i < functions.length; i++) {
+            eval("var action_fcn = function() {" + functions[i].action + ";}");
             action_fcn();
         }
-
-        console.log("function is: " + actionReq.responseText);
-        
+    }
 };
 
 addReq.onreadystatechange = function() {
@@ -64,23 +66,26 @@ function addScore(name, score) {
     var score_info = {};
 
     score_info.name = name;
-    score_info.score = score;
+    score_info.score = parseInt(score);
 
     addReq.open('PUT', '/add');
     addReq.send(JSON.stringify(score_info));
 }
 
 // Need to figure out what to give this, and what we want - e.g use_id? inspect_result_id? (which is a use_id)
-function performAction(use_id, scene_id) {
-    var interacting = {};
+function performAction(player, obj_id, scene_id) {
+    if (obj_id !== undefined) {
+        var interacting = {};
 
-    interacting.use_id = use_id;
-    interacting.scene_id = scene_id;
+        interacting.player = player;
+        interacting.obj_id = obj_id;
+        interacting.scene_id = scene_id;
 
-    console.log("Performing action on: " + JSON.stringify(interacting));
-
-    actionReq.open('POST', '/interaction');
-    actionReq.send(JSON.stringify(interacting));
+        actionReq.open('POST', '/interaction');
+        actionReq.send(JSON.stringify(interacting));
+    } else {
+        console.log("obj_id is undefined!");
+    }
 }
 
 // Need to figure out what to give this, and what we want - e.g use_id? inspect_result_id? (which is a use_id)

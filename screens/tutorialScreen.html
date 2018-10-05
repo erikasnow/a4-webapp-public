@@ -11,14 +11,14 @@
         <!--weeds-->
         <img id="catnip" src="assets/items/catnip.png" style="width:5%;height:7%;position:absolute;bottom:25%;right:80%" onclick="imageDisappear('catnip');addToInventory('catnip')">
         <!--doors STILL NEED INTERACTIONS-->
-        <img id="doorLeft" src="assets/items/doorLeft.png" style="width:6%;height:16%;position:absolute;bottom:37%;right:65.5%" onclick="interaction2(window.inventoryActive, 'doorLeft')">
-        <img id="doorRight" src="assets/items/doorRight.png" style="width:5.5%;height:15.9%;position:absolute;bottom:37%;right:61.1%"  onclick="interaction2(window.inventoryActive, 'doorRight')">
+        <img id="doorLeft" src="assets/items/doorLeft.png" style="width:6%;height:16%;position:absolute;bottom:37%;right:65.5%" onclick="performAction(window.character, window.inventoryActive, 'doorLeft')">
+        <img id="doorRight" src="assets/items/doorRight.png" style="width:5.5%;height:15.9%;position:absolute;bottom:37%;right:61.1%"  onclick="performAction(window.character, window.inventoryActive, 'doorRight')">
         <!--windows-->
-        <img id="window" src="assets/items/window.png" style="width:6.1%;height:11%;position:absolute;bottom:42%;right:73%" onclick="interaction2(window.inventoryActive, 'window')">
-        <img id="boardedwindow" src="assets/items/boardedwindow.png" style="width:6.1%;height:11%;position:absolute;bottom:42%;right:80.1%"onclick="interaction2(window.inventoryActive, 'boardedwindow')">
+        <img id="window" src="assets/items/window.png" style="width:6.1%;height:11%;position:absolute;bottom:42%;right:73%" onclick="performAction(window.character, window.inventoryActive, 'window')">
+        <img id="boardedwindow" src="assets/items/boardedwindow.png" style="width:6.1%;height:11%;position:absolute;bottom:42%;right:80.1%"onclick="performAction(window.character, window.inventoryActive, 'boardedwindow')">
         <!--cats SHOWING FOR NOW STILL NEED INTERACTIONS-->
-        <img hidden id="cat" src="assets/items/cat.png" style="width:6%;height:10%;position:absolute;bottom:25%;right:62%" onclick="interaction2(window.inventoryActive, 'cat');deleteFromInventory() ">
-        <img hidden id="catKey" src="assets/items/catKey.png" style="width:6%;height:10%;position:absolute;bottom:25%;right:62%" onclick="giveKey();imageDisappear('catKey');addToInventory('keyDoor');">
+        <img id="cat" src="assets/items/cat.png" style="width:6%;height:10%;position:absolute;bottom:25%;right:62%" onclick="performAction(window.character, window.inventoryActive, 'cat');">
+        <img id="catKey" src="assets/items/catKey.png" style="width:6%;height:10%;position:absolute;bottom:25%;right:62%" onclick="giveKey();imageDisappear('catKey');addToInventory('keyDoor');">
     </div>
     <div style="text-align:center;margin-top:1%">
         <!--placeholder-->

@@ -7,49 +7,59 @@ function changeScreen(newScreen, removeInventory) {
     }
 }
 
-function interaction(useId, sceneId){
-    console.log("INTERACTION: " + useId + " with scene_id " + sceneId);
-    performAction(useId, sceneId);
+
+function disableEndScreenButton() {
+    var btn = document.getElementById("endScreenBtn");
+    btn.removeAttribute("disabled");
 }
 
+function getKeyFromCat() {
+    var cat = document.getElementById("catKey");
+    cat.removeAttribute("hidden");
+    var catKey = document.getElementById("cat");
+    catKey.hidden = true;
+}
+
+/*
 function interaction2(useId, sceneId){
-    if(useId == 'rock5' && sceneId=='window'){
+    if(useId === 'rock5' && sceneId === 'window'){
         imageDisappear('window');
-        var btn = document.getElementById("endScreenBtn")
-        btn.removeAttribute("disabled")
-    } 
-    if (useId == 'lighter1' && sceneId == "boardedwindow") {
-        imageDisappear('boardedwindow');
-        var btn = document.getElementById("endScreenBtn")
-        btn.removeAttribute("disabled")
+        var btn = document.getElementById("endScreenBtn");
+        btn.removeAttribute("disabled");
     }
-    
-    if (useId=='catnip1' && sceneId=='cat'){
-        var cat = document.getElementById("catKey")
+    if (useId === 'lighter1' && sceneId === "boardedwindow") {
+        imageDisappear('boardedwindow');
+        var btn = document.getElementById("endScreenBtn");
+        btn.removeAttribute("disabled");
+    }
+    if (useId === 'catnip1' && sceneId === 'cat'){
+        var cat = document.getElementById("catKey");
         cat.removeAttribute("hidden");
-        var catKey = document.getElementById("cat")
+        var catKey = document.getElementById("cat");
         catKey.hidden = true;
-    } else if (sceneId =='cat'){
+    } else if (sceneId === 'cat'){
         var picprompt = document.getElementById("objectPicture");
         picprompt.innerHTML= "";
         let textprompt = document.getElementById("objectInfo");
         textprompt.innerHTML = "Bambi's playful";
     }
-    console.log("here"+ useId+sceneId)
-    if (useId == 'keyDoor1' &&(sceneId =='doorLeft' || sceneId == 'doorRight')) {
+    console.log("here"+ useId+sceneId);
+
+    if (useId === 'keyDoor1' &&(sceneId === 'doorLeft' || sceneId === 'doorRight')) {
         imageDisappear('doorLeft');
         imageDisappear('doorRight');
-        var btn = document.getElementById("endScreenBtn")
-        btn.removeAttribute("disabled")
+        btn = document.getElementById("endScreenBtn");
+        btn.removeAttribute("disabled");
     }
 }
+*/
 
 function clearInventory() {
     var cellsRow = document.getElementById("inventoryCells");
     var cells = cellsRow.getElementsByTagName("td");
 
     for(let i = 0; i < cells.length; i++){
-        console.log("entered for loop")
+        console.log("entered for loop");
         cells[i].innerHTML = '';
     }
     var prompt = document.getElementById("objectInfo");
@@ -75,7 +85,6 @@ function itemclick(itemId){
 
 //dissapear
 function imageDisappear(imageId){
-    console.log("In image disappear!");
     document.getElementById(imageId).style.display = "none";
 }
 

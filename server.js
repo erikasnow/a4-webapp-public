@@ -201,7 +201,7 @@ function getInteraction(req, res) {
     });
 
     req.on('end', function() {
-        database.getFunction(input[0].use_id, input[0].scene_id, res);
+        database.getFunction(input[0].player, input[0].obj_id, input[0].scene_id, res);
     });
 }
 

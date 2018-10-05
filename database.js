@@ -75,11 +75,8 @@ exports.getInspectResult2 = function(obj_id, res) {
 
 };
 
-exports.getAction = function(scene_item, use_id) {
-    var query = `SELECT action FROM scene1_interaction WHERE use_id = '${use_id}' AND scene_id = '${scene_item}';`;
-}
 exports.getAllScores = function(res) {
-    var query = 'SELECT * FROM score;';
+    var query = 'SELECT * FROM score ORDER BY score DESC LIMIT 10;';
 
     client.query(query, function(err, result) {
         if (result.rows.length > 0) {
@@ -90,22 +87,42 @@ exports.getAllScores = function(res) {
     });
 };
 
-exports.getFunction = function(use_id, scene_id, res) {
-    var query = `SELECT action FROM scene1_interaction WHERE use_id = '${use_id}' AND scene_id = '${scene_id}'`;
+exports.getFunction = function(player, obj_id, scene_id, res) {
+    var obj_idQuery = `SELECT * FROM inventory WHERE obj_id = '${obj_id}';`;
 
-    client.query(query, function(err, result) {
-        if (result.rows.length > 0) {
-            res.end(result.rows[0].action);
-        } else {
-            res.end();
+    client.query(obj_idQuery, function (err, result) {
+        var use_id;
+
+        switch (player) {
+            case 'Erika':
+                use_id = obj_id + result.rows[0].e_use;
+                break;
+            case 'Ally':
+                use_id = obj_id + result.rows[0].a_use;
+                break;
+            case 'Joan':
+                use_id = obj_id + result.rows[0].j_use;
+                break;
+            case 'Krysta':
+                console.log("KRYSTA")
+                use_id = obj_id + result.rows[0].k_use;
+                break;
         }
+
+        var query = `SELECT action FROM scene1_interaction WHERE use_id = '${use_id}' AND scene_id = '${scene_id}';`;
+
+        client.query(query, function (err, result2) {
+            if (result2.rows.length > 0) {
+                res.end(JSON.stringify(result2.rows));
+            } else {
+                res.end();
+            }
+        });
     });
 };
 
 exports.addScore = function(name, score) {
-    var query = `INSERT INTO score VALUES('${name}', '${score}');`;
-
-    console.log("add query: " + query);
+    var query = `INSERT INTO score VALUES('${name}', ${score});`;
 
     client.query(query, function(err, result) {
     });

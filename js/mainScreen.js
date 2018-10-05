@@ -15,7 +15,7 @@ function start() {
     window.inventory[4]= {id:"", inspected:false, desciption:""};
     window.inventory[5]= {id:"", inspected:false, desciption:""};
     window.inventory[6]= {id:"", inspected:false, desciption:""};
-    window.timerTime=null;
+    window.timerTime = null;
     window.inspectResultReceived =0;
     window.activeSlot = "";
     window.inspectResult= "";
